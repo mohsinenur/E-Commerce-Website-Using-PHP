@@ -1,0 +1,453 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
+}
+h3 {
+  font-size: 25px;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: normal;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*my work start from here*/
+* {
+    margin: 0px;
+    padding: 0px;
+}
+body, button, input, label, select, td, textarea {
+    font-family: Arial, Helvetica, tahoma,verdana,arial,sans-serif;
+    font-size: 12px;
+}
+body{
+    width: 100%;
+    position: relative;
+    background-color: #ffffff;
+    min-width: 1080px;
+}
+.homepageheader {
+  position: fixed;
+  height: 82px;
+  width: 100%;
+  min-width: 980px;
+  border-bottom: 1px solid #8E9D8E;
+  margin:  0px;
+  background-image: initial;
+  background-position-x: initial;
+  background-position-y: initial;
+  background-size: initial;
+  background-repeat-x: initial;
+  background-repeat-y: initial;
+  background-attachment: initial;
+  background-origin: initial;
+  background-clip: initial;
+  background-color: rgb(199, 88, 126);
+}
+.loginButton .signinButton {
+	color: #FFFFFF;
+    background: #169E8F;
+    border: 1px solid #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: bold;
+    line-height: 15px;
+    padding: 12px 24px;
+	border-radius: 16px;
+    text-align: center;
+    text-decoration: none;
+    float: right; 
+    margin: 20px 0px 0px 10px; 
+    font-size: 17px;
+}
+.uiloginbutton:hover {
+  background-color: #24bfae;
+}
+
+#newsearch{
+	float:left;
+	padding:15px;
+}
+.srctextinput{
+	margin: 0px;
+	padding: 9px 15px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:20px;
+	border:1px solid #0076a3; border-right:0px;
+	border-top-left-radius: 5px 5px;
+	border-bottom-left-radius: 5px 5px;
+	width: 335px;
+}
+.srcbutton {
+	margin: 0;
+	padding: 9px 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:20px;
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	color: #ffffff;
+	border: solid 1px #0076a3; border-right:0px;
+	background: #169E8F;
+	border-top-right-radius: 5px 5px;
+	border-bottom-right-radius: 5px 5px;
+}
+.srcbutton:hover {
+	text-decoration: none;
+	background: #24bfae;
+}
+
+.pquantys {
+  margin: 0px;
+  padding: 9px 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size:20px;
+  border:1px solid #0076a3; border-right:0px;
+  border-top-left-radius: 5px 5px;
+  border-bottom-left-radius: 5px 5px;
+}
+.buybutton {
+  margin: 0;
+  padding: 9px 5px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size:20px;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  border: solid 1px #0076a3; border-right:0px;
+  background: #169E8F;
+  border-top-right-radius: 5px 5px;
+  border-bottom-right-radius: 5px 5px;
+}
+.buybutton:hover {
+  text-decoration: none;
+  background: #24bfae;
+}
+
+
+/* Fixes submit button height problem in Firefox */
+.srcbutton::-moz-focus-inner {
+  	border: 0;
+}
+.srcclear{
+	clear:both;
+}
+.home-welcome {
+	margin-top: 0px;
+}
+.home-welcome-text { 
+	 
+	height: 800px;
+}
+.home-welcome-text h1 {
+ 	text-align: center; 
+ 	font-size: 85px; 
+ 	padding-top: 150px; 
+ 	font-weight: bold; 
+ 	color: #ffffff;
+ }
+ .home-welcome-text h2 {
+ 	text-align: center;   
+ 	font-weight: bold; 
+ 	color: #ffffff;
+  font-size: 30px;
+ }
+ .home-footer {
+ 	text-align: center;
+	color: #ffffff;
+	background-color: #3f3838;
+	font-size: 18px;
+	padding: 20px 10px;
+ }
+
+/*sign in */
+.signupform_content h2 {
+  margin: 0px 0 0 0;
+  padding: 0px 0px 20px 0px;
+  font-size: 40px;
+  color: #169E8F;
+  font-weight: bold;
+  text-align: center;
+}
+.signupform_text {
+  font-size: 18px;
+  padding: 0;
+  font-weight: bold;
+  color: #41A62D;
+  font-style: normal;
+}
+.signup_form {
+  background-image: initial;
+  background-position-x: initial;
+  background-position-y: initial;
+  background-size: initial;
+  background-repeat-x: initial;
+  background-repeat-y: initial;
+  background-attachment: initial;
+  background-origin: initial;
+  background-clip: initial;
+  padding: 22px 53px 0 53px;
+  color: #eeeeee;
+  border-radius: 4px;
+  font-style: italic;
+}
+
+.signupbox {
+  font-size: 20px;
+  font-style: italic;
+  margin-bottom: 3px;
+  margin-top: 0px;
+  padding: 14px;
+  line-height: 25px;
+  border-radius: 4px;
+  border: 1px solid #169E8F;
+  color: #169E8F;
+  margin-left: 0;
+  width: 270px;
+  height: 20px;
+  background-color: transparent;
+}
+
+.signupbutton {
+    background-color: transparent;
+    border: 2px solid #FFFFFF;
+    border-radius: 6px;
+    margin: 10px 0px;
+}
+.uisignupbutton {
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 13px;
+    padding: 14px 0;
+    width: 300px;
+    text-align: center;
+    text-decoration: none;
+    border-width: 2px;
+    border: 1px solid #169E8F;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1)
+}
+.uisignupbutton:hover {
+  background-color: #24bfae;
+}
+
+.signup_error_msg {
+  font-weight: bold;
+  color: #A92A2A;
+  padding: 0px 10px 15px 10px;
+  text-align: center;
+  font-size: 16px;
+}
+.succReg {
+    padding: 20px;
+    margin: 150px auto;
+    line-height: 1.5;
+    width: 930px;
+}
+.succReg p {
+  font-size: 40px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif; 
+  color: #0B810B;
+  text-align: center;
+}
+.succReg h1 {
+  font-size: 20px;
+  font-weight: bold; 
+  color: #737070;
+  text-align: center;
+}
+/*recovary style*/
+.pass_body2 {
+    width: 560px;
+    margin: 30px auto;
+}
+.pass_body2 p {
+    padding: 5px 8px;
+    font-size: 20px;
+    color: #169E8F;
+    font-weight: bold;
+}
+
+/*error echo*/
+.error_echo {
+  color: red;
+  text-align: center;
+  padding: 15px;
+  width: 868px;
+  margin: 0 auto;
+  font-weight: bold;
+  border-radius: 4px;
+  font-size: 17px;
+  background-color: #F3F38B;
+  border-bottom: 2px solid #BBB907;
+  border-top: 1px solid #BBB907;
+  border-left: 1px solid #BBB907;
+  border-right: 1px solid #BBB907;
+}
+.succes_echo {
+  color: #088A08;
+  text-align: center;
+  padding: 17px;
+  margin: 0 auto;
+  width: 866px;
+  font-weight: bold;
+  font-size: 17px;
+  background-color: rgba(247, 247, 69, 0.36);
+  border-bottom: 1px solid #BBB907;
+}
+.submRecov {
+    color: #A9A6A6;
+    padding: 7px;
+    border-radius: 2px;
+    border: 2px solid #7C7979;
+}
+.forgetpass {
+	text-decoration: none; 
+	color: #186fe0
+}
+.forgetpass:hover {
+  color: red;
+}
+
+.home-prodlist h3 {
+  text-align: center;
+  margin: 20px 10px;
+  font-size: 25px;
+}
+.home-prodlist-img img div {
+    font-size: 20px;
+}
+.home-prodlist-img:hover {
+    background-color: #9a3489;
+    border-radius: 8px;
+    color: #fff;
+}
+.home-prodlist-imgi {
+    height: 350px; 
+    width: 300px; 
+    padding: 2px;
+    border: 1px solid #847b7b;
+    border-radius: 8px;
+}
+.categolis  {
+    line-height: 1.3;
+    font-weight: bold;
+    color: #fff;
+    padding: 110px 20px 20px 145px; 
+    background-color: #169e8f;
+    text-align: center;
+    font-size: 25px;
+}
+.categolis table tbody tr th {
+  padding: 0px 6px 0px 0px;
+}
+/* admin style */
+
+.rightsidemenu {
+    float: right;
+    text-align: center;
+    width: 100%;
+    margin: 0px;
+    background-color: #169e8f;
+    font-size: 15px;
+    color: #fff;
+    font-weight: bold;
+    height: 537px;
+    overflow: auto;
+}
+.rightsidemenu th {
+  margin-top: 5px;
+  border: 2px solid;
+  padding: 7px 2px;
+  width: 10px;
+}
+/* settring */
+.settingsleftcontent {
+    width: 300px;
+    color: #7C7979;
+    line-height: 1.2;
+    padding: 0;
+    text-align: justify;
+    background-color: #FFFFFF;
+    -webkit-box-shadow: 0 2px 1px 0 #B5B2B2;
+    box-shadow: 0 2px 1px 0 #B5B2B2;
+    border-radius: 4px;
+}
+.settingsleftcontent h2 {
+  text-align: left;
+  font-size: 16px;
+  color: #0B810B;
+}
+.settingsleftcontent ul {
+  list-style: none;
+}
+.settingsleftcontent ul li {
+  list-style: none;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+.settingsleftcontent ul li a {
+    clear: both;
+    cursor: pointer;
+    display: block;
+    font-size: 15px;
+    font-weight: normal;
+    float: none;
+    line-height: 18px;
+    margin: 0;
+    padding: 10px 20px;
+    text-shadow: none;
+    white-space: nowrap;
+    color: #0C2860;
+    text-decoration: none;
+    text-align: center;
+}
+.settingsleftcontent ul li:hover {
+  background-color: #3A5487;
+  color: #fff;
+  border-radius: 4px;
+}
+
+.settingsleftcontent ul li a:hover {
+  color: #fff;
+}
