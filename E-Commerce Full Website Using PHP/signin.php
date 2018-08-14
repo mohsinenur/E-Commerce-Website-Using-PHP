@@ -85,7 +85,7 @@ $_POST['last_name'] = trim($_POST['last_name']);
 						Signup email: ".$_POST['email']."
 						
 						";
-						if (@mail($_POST['email'],"eBuyBD Activation Code",$msg, "From:eBuyBD <no-reply@ebuybd.xyz>")) {
+						//if (@mail($_POST['email'],"eBuyBD Activation Code",$msg, "From:eBuyBD <no-reply@ebuybd.xyz>")) {
 							
 						$result = mysql_query("INSERT INTO user (firstName,lastName,email,mobile,address,password,confirmCode) VALUES ('$_POST[first_name]','$_POST[last_name]','$_POST[email]','$_POST[mobile]','$_POST[signupaddress]','$_POST[password]','$confirmCode')");
 						
@@ -98,9 +98,9 @@ $_POST['last_name'] = trim($_POST['last_name']);
 							Activation code sent to your email. <br>
 							Your activation code: '.$confirmCode.'
 						</font></div></div>';
-						}else {
-							throw new Exception('Email is not valid!');
-						}
+						//}else {
+						//	throw new Exception('Email is not valid!');
+						//}
 						
 						
 					}else {
