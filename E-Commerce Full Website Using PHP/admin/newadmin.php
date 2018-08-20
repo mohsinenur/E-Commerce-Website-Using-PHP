@@ -87,7 +87,7 @@ $_POST['last_name'] = trim($_POST['last_name']);
 						Signup email: ".$_POST['email']."
 						
 						";
-						if (@mail($_POST['email'],"eBuyBD Activation Code",$msg, "From:eBuyBD <no-reply@ebuybd.xyz>")) {
+						//if (@mail($_POST['email'],"eBuyBD Activation Code",$msg, "From:eBuyBD <no-reply@ebuybd.xyz>")) {
 							
 						$result = mysql_query("INSERT INTO admin (firstName,lastName,email,mobile,address,password,type,confirmCode) VALUES ('$_POST[first_name]','$_POST[last_name]','$_POST[email]','$_POST[mobile]','$_POST[signupaddress]','$_POST[password]','$_POST[admintype]','$confirmCode')");
 						
@@ -97,12 +97,11 @@ $_POST['last_name'] = trim($_POST['last_name']);
 						<div class="signupform_text" style="font-size: 18px; text-align: center;">
 						<font face="bookman">
 							Email: '.$u_email.'<br>
-							Activation code sent to your email. <br>
-							Your activation code: '.$confirmCode.'
+							Account Successfully Created. <br>
 						</font></div></div>';
-						}else {
-							throw new Exception('Email is not valid!');
-						}
+						//}else {
+						//	throw new Exception('Email is not valid!');
+						//}
 						
 						
 					}else {
