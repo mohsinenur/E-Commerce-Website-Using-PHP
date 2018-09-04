@@ -65,6 +65,9 @@ $quan = $_POST['quantity'];
 		
 		
 						$d = date("Y-m-d"); //Year - Month - Day
+						$timestamp = time();
+						$date = strtotime("+7 day", $timestamp);
+						$date = date('Y-m-d', $date);
 						
 						// send email
 						$msg = "
@@ -72,9 +75,9 @@ $quan = $_POST['quantity'];
 						Your Order successfull. Very soon we will send you a verification call.
 						
 						";
-						if (@mail($uemail_db,"eBuyBD Product Order",$msg, "From:eBuyBD <no-reply@ebuybd.xyz>")) {
+						//if (@mail($uemail_db,"eBuyBD Product Order",$msg, "From:eBuyBD <no-reply@ebuybd.xyz>")) {
 							
-						if(mysql_query("INSERT INTO orders (uid,pid,quantity,oplace,mobile,odate) VALUES ('$user','$poid',$quan,'$_POST[address]','$_POST[mobile]','$d')")){
+						if(mysql_query("INSERT INTO orders (uid,pid,quantity,oplace,mobile,odate,ddate) VALUES ('$user','$poid',$quan,'$_POST[address]','$_POST[mobile]','$d','$date')")){
 
 							//success message
 						$success_message = '
@@ -83,8 +86,10 @@ $quan = $_POST['quantity'];
 						<font face="bookman">
 							We send you a verification <br> call very soon.
 						</font></div></div>';
+						}else{
+							$error_message = 'Something goes wrong!';
 						}
-						}
+						//}
 
 	}
 	catch(Exception $e) {
@@ -184,14 +189,14 @@ $quan = $_POST['quantity'];
 									</div>
 									<div>
 										<td>
-											<select name="quantity" required="required" style=" font-size: 20px;
+											<select onchange="changeAmount()" name="quantity" required="required" id="productAmount" style=" font-size: 20px;
 										font-style: italic; margin-bottom: 3px;margin-top: 0px;padding: 14px;line-height: 25px;border-radius: 4px;border: 1px solid #169E8F;color: #169E8F;margin-left: 0;width: 300px;background-color: transparent;" class="">';
 
 					
 
 				 ?><?php
 												for ($i=1; $i<=$available; $i++) { 
-													echo '<option value="'.$i.'">Quantity: '.$i.'</option>';
+													echo '<option  value="'.$i.'">Quantity: '.$i.'</option>';
 												}
 											?>
 											<?php echo '
@@ -231,7 +236,7 @@ $quan = $_POST['quantity'];
 								<div class="home-prodlist-img"><a href="'.$category.'/view_product.php?pid='.$id.'">
 									<img src="image/product/'.$item.'/'.$picture.'" class="home-prodlist-imgi">
 									</a>
-									<div style="text-align: center; padding: 0 0 6px 0;"> <span style="font-size: 15px;">'.$pName.'</span><br> Price: '.$price.' Tk</div>
+									<div style="text-align: center; padding: 0 0 6px 0;"> <span style="font-size: 15px;">'.$pName.'</span><br> Price: <span id="amountText">'.$price.'</span> Tk <span id="aHiddenText" style="display:none">'.$price.'</span></div>
 								</div>
 								
 							</li>
@@ -242,5 +247,17 @@ $quan = $_POST['quantity'];
 
 		</div>
 	</div>
+	<script type="text/javascript">
+	function changeAmount() {
+	    var v = document.getElementById("aHiddenText").innerHTML;
+	    document.getElementById("amountText").innerHTML = v;
+	    var sBox = document.getElementById("productAmount");
+    	var y = sBox.value;
+	    var x = document.getElementById("amountText").innerHTML;
+	    var y = parseInt(y);
+	    var x = parseInt(x);
+	    document.getElementById("amountText").innerHTML = x+"x"+y+ " = " + x*y;
+	}
+	</script>
 </body>
 </html>
