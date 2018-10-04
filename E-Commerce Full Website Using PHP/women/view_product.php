@@ -93,5 +93,38 @@ $getposts = mysql_query("SELECT * FROM products WHERE id ='$pid'") or die(mysql_
 		?>
 
 	</div>
+	<div style="padding: 30px 95px; font-size: 25px; margin: 0 auto; display: table; width: 98%;">
+		<h3 style="padding-bottom: 20px">Recommand Product For You:</h3>
+		<div>
+		<?php 
+			$getposts = mysql_query("SELECT * FROM products WHERE available >='1' AND id != '".$pid."' AND item ='".$item."'  ORDER BY RAND() LIMIT 3") or die(mysql_error());
+					if (mysql_num_rows($getposts)) {
+					echo '<ul id="recs">';
+					while ($row = mysql_fetch_assoc($getposts)) {
+						$id = $row['id'];
+						$pName = $row['pName'];
+						$price = $row['price'];
+						$description = $row['description'];
+						$picture = $row['picture'];
+						
+						echo '
+							<ul style="float: left;">
+								<li style="float: left; padding: 0px 25px 25px 25px;">
+									<div class="home-prodlist-img"><a href="view_product.php?pid='.$id.'">
+										<img src="../image/product/'.$item.'/'.$picture.'" class="home-prodlist-imgi">
+										</a>
+										<div style="text-align: center; padding: 0 0 6px 0;"> <span style="font-size: 15px;">'.$pName.'</span><br> Price: '.$price.' Tk</div>
+									</div>
+									
+								</li>
+							</ul>
+						';
+
+						}
+				}
+		?>
+			
+		</div>
+	</div>
 </body>
 </html>
