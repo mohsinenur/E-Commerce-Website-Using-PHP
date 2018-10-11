@@ -34,3 +34,7 @@ Hello friends, This is my first full e-commerce project. This is free. Anybody c
 
 ## Conclusion
 There are also many more feature which are not in the list. Feel free to use this project
+
+### Set Up
+(i) Use XAMPP 5.6 for this project. You can download it from here... https://www.apachefriends.org/download.html
+
