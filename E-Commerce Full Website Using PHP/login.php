@@ -1,6 +1,6 @@
-<?php include ( "inc/connect.inc.php" ); ?>
-<?php session_start(); ?>
-<?php
+<?php 
+include ( "inc/connect.inc.php" );
+session_start();
 ob_start();
 if (!isset($_SESSION['user_login'])) {
 }
@@ -11,21 +11,24 @@ $emails = "";
 $passs = "";
 if (isset($_POST['login'])) {
 	if (isset($_POST['email']) && isset($_POST['password'])) {
-		$user_login = mysql_real_escape_string($_POST['email']);
+		$user_login = $conn_real_escape_string($_POST['email']);
 		$user_login = mb_convert_case($user_login, MB_CASE_LOWER, "UTF-8");	
-		$password_login = mysql_real_escape_string($_POST['password']);		
+		$password_login = $conn->real_escape_string($_POST['password']);		
 		$num = 0;
 		$password_login_md5 = md5($password_login);
-		$result = mysql_query("SELECT * FROM user WHERE (email='$user_login') AND password='$password_login_md5' AND activation='yes'");
-		$num = mysql_num_rows($result);
-		$get_user_email = mysql_fetch_assoc($result);
+		$true = "yes"; 
+		$sql = $conn->prepare("SELECT * FROM user WHERE email=? AND password=? AND activation=?");
+		$sql->bind_param("sss", $email, $password_login_md5, $true);
+		$sql->execute(); 
+		$result = $sql->get_result();
+		$num = $result->num_rows;
+		$get_user_email = $result->fetch_assoc();
 			$get_user_uname_db = $get_user_email['id'];
 		if ($num>0) {
-			$_SESSION['user_login'] = $get_user_uname_db;
 			setcookie('user_login', $user_login, time() + (365 * 24 * 60 * 60), "/");
 			
 			if (isset($_REQUEST['ono'])) {
-				$ono = mysql_real_escape_string($_REQUEST['ono']);
+				$ono = $conn->real_escape_string($_REQUEST['ono']);
 				header("location: orderform.php?poid=".$ono."");
 			}else {
 				header('location: index.php');
@@ -68,7 +71,8 @@ if(isset($_POST['activate'])){
 			$get_user_uname_db = $get_user_email['id'];
 			$_SESSION['user_login'] = $get_user_uname_db;
 			setcookie('user_login', $user_login, time() + (365 * 24 * 60 * 60), "/");
-			mysql_query("UPDATE user SET confirmCode='0', activation='yes' WHERE email='$user_login'");
+			$upd = $conn->prepare("UPDATE user SET confirmCode=?, activation=? WHERE email=?");$upd->bind_param("iss", $one, $true, $user_login);
+			
 			if (isset($_REQUEST['ono'])) {
 				$ono = mysql_real_escape_string($_REQUEST['ono']);
 				header("location: orderform.php?poid=".$ono."");
