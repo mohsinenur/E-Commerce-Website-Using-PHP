@@ -8,8 +8,8 @@ if (!isset($_SESSION['user_login'])) {
 }
 else {
 	$user = $_SESSION['user_login'];
-	$result = mysql_query("SELECT * FROM user WHERE id='$user'");
-		$get_user_email = mysql_fetch_assoc($result);
+	$result = mysqli_query($con, "SELECT * FROM user WHERE id='$user'");
+		$get_user_email = mysqli_fetch_assoc($result);
 			$uname_db = $get_user_email['firstName'];
 			$uemail_db = $get_user_email['email'];
 			$upass = $get_user_email['password'];
@@ -20,7 +20,7 @@ else {
 
 if (isset($_REQUEST['uid'])) {
 	
-	$user2 = mysql_real_escape_string($_REQUEST['uid']);
+	$user2 = mysqli_real_escape_string($con, $_REQUEST['uid']);
 	if($user != $user2){
 		header('location: index.php');
 	}
@@ -44,7 +44,7 @@ $npass1 = $_POST['npass1'];
 				if( md5($opass) == $upass){
 					if($npass == $npass1){
 						$npass = md5($npass);
-						mysql_query("UPDATE user SET password='$npass' WHERE id='$user'");
+						mysqli_query($con, "UPDATE user SET password='$npass' WHERE id='$user'");
 						$success_message = '
 						<div class="signupform_text" style="font-size: 18px; text-align: center;">
 						<font face="bookman">
@@ -73,7 +73,7 @@ $npass1 = $_POST['npass1'];
 				}
 
 			if($uemail_db != $email) {
-				if(mysql_query("UPDATE user SET  email='$email' WHERE id='$user'")){
+				if(mysqli_query($con, "UPDATE user SET  email='$email' WHERE id='$user'")){
 					//success message
 					$success_message = '
 					<div class="signupform_text" style="font-size: 18px; text-align: center;">

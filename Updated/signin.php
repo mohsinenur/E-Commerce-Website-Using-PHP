@@ -64,8 +64,8 @@ $_POST['last_name'] = trim($_POST['last_name']);
 		// Check if email already exists
 		
 		$check = 0;
-		$e_check = mysql_query("SELECT email FROM `user` WHERE email='$u_email'");
-		$email_check = mysql_num_rows($e_check);
+		$e_check = mysqli_query($con, "SELECT email FROM `user` WHERE email='$u_email'");
+		$email_check = mysqli_num_rows($e_check);
 		if (strlen($_POST['first_name']) >2 && strlen($_POST['first_name']) <20 ) {
 			if (strlen($_POST['last_name']) >2 && strlen($_POST['last_name']) <20 ) {
 			if ($check == 0 ) {
@@ -88,7 +88,7 @@ $_POST['last_name'] = trim($_POST['last_name']);
 						";
 						//if (@mail($_POST['email'],"eBuyBD Activation Code",$msg, "From:eBuyBD <no-reply@ebuybd.xyz>")) {
 							
-						$result = mysql_query("INSERT INTO user (firstName,lastName,email,mobile,address,password,confirmCode) VALUES ('$_POST[first_name]','$_POST[last_name]','$_POST[email]','$_POST[mobile]','$_POST[signupaddress]','$_POST[password]','$confirmCode')");
+						$result = mysqli_query($con, "INSERT INTO user (firstName,lastName,email,mobile,address,password,confirmCode) VALUES ('$_POST[first_name]','$_POST[last_name]','$_POST[email]','$_POST[mobile]','$_POST[signupaddress]','$_POST[password]','$confirmCode')");
 						
 						//success message
 						$success_message = '

@@ -8,8 +8,8 @@ if (!isset($_SESSION['admin_login'])) {
 }
 else {
 	$user = $_SESSION['admin_login'];
-	$result = mysql_query("SELECT * FROM admin WHERE id='$user'");
-		$get_user_email = mysql_fetch_assoc($result);
+	$result = mysqli_query($con, "SELECT * FROM admin WHERE id='$user'");
+		$get_user_email = mysqli_fetch_assoc($result);
 			$uname_db = $get_user_email['firstName'];
 			$utype_db=$get_user_email['type'];
 			$ulast_name = $get_user_email['lastName'];
@@ -72,8 +72,8 @@ $_POST['last_name'] = trim($_POST['last_name']);
 		// Check if email already exists
 		
 		$check = 0;
-		$e_check = mysql_query("SELECT email FROM `admin` WHERE email='$u_email'");
-		$email_check = mysql_num_rows($e_check);
+		$e_check = mysqli_query($con, "SELECT email FROM `admin` WHERE email='$u_email'");
+		$email_check = mysqli_num_rows($e_check);
 		if (strlen($_POST['first_name']) >2 && strlen($_POST['first_name']) <16 ) {
 			if ($check == 0 ) {
 				if (strlen($_POST['password']) >4 ) {
@@ -86,9 +86,9 @@ $_POST['last_name'] = trim($_POST['last_name']);
 					
 					//if (@mail($_POST['email'],"eBuyBD Activation Code",$msg, "From:eBuyBD <no-reply@ebuybd.xyz>")) {
 					if($utype_db == 'admin'){
-						$result = mysql_query("UPDATE admin SET firstName='$_POST[first_name]', lastName='$_POST[last_name]', email='$u_email', mobile='$u_mobile', address='$u_address', password='$_POST[password]', type='$u_admin_type' WHERE id='$user'");
+						$result = mysqli_query($con, "UPDATE admin SET firstName='$_POST[first_name]', lastName='$_POST[last_name]', email='$u_email', mobile='$u_mobile', address='$u_address', password='$_POST[password]', type='$u_admin_type' WHERE id='$user'");
 					}else{
-						$result = mysql_query("UPDATE admin SET firstName='$_POST[first_name]', lastName='$_POST[last_name]', email='$u_email', mobile='$u_mobile', address='$u_address', password='$_POST[password]' WHERE id='$user'");
+						$result = mysqli_query($con, "UPDATE admin SET firstName='$_POST[first_name]', lastName='$_POST[last_name]', email='$u_email', mobile='$u_mobile', address='$u_address', password='$_POST[password]' WHERE id='$user'");
 					}
 					
 					

@@ -7,14 +7,14 @@ if (!isset($_SESSION['user_login'])) {
 }
 else {
 	$user = $_SESSION['user_login'];
-	$result = mysql_query("SELECT * FROM user WHERE id='$user'");
-		$get_user_email = mysql_fetch_assoc($result);
+	$result = mysqli_query($con, "SELECT * FROM user WHERE id='$user'");
+		$get_user_email = mysqli_fetch_assoc($result);
 			$uname_db = $get_user_email['firstName'];
 }
 
 if (isset($_REQUEST['keywords'])) {
 
-	$epid = mysql_real_escape_string($_REQUEST['keywords']);
+	$epid = mysqli_real_escape_string($con, $_REQUEST['keywords']);
 	if($epid != "" && ctype_alnum($epid)){
 		
 	}else {
@@ -96,11 +96,11 @@ $search_value = trim($_GET['keywords']);
 		<?php 
 			if (isset($_GET['keywords']) && $_GET['keywords'] != ""){
 				$search_value = trim($_GET['keywords']);
-				$getposts = mysql_query("SELECT * FROM products WHERE pName like '%$search_value%'  ORDER BY id DESC") or die(mysql_error());
-					if ( $total = mysql_num_rows($getposts)) {
+				$getposts = mysqli_query($con, "SELECT * FROM products WHERE pName like '%$search_value%'  ORDER BY id DESC") or die(mysqlI_error($con));
+					if ( $total = mysqli_num_rows($getposts)) {
 					echo '<ul id="recs">';
 					echo '<div style="text-align: center;"> '.$total.' Products Found... </div><br>';
-					while ($row = mysql_fetch_assoc($getposts)) {
+					while ($row = mysqli_fetch_assoc($getposts)) {
 						$id = $row['id'];
 						$pName = $row['pName'];
 						$price = $row['price'];

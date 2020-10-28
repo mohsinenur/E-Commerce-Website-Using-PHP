@@ -3,7 +3,7 @@
 
 if (isset($_REQUEST['poid'])) {
 	
-	$poid = mysql_real_escape_string($_REQUEST['poid']);
+	$poid = mysqli_real_escape_string($con, $_REQUEST['poid']);
 }else {
 	header('location: index.php');
 }
@@ -15,8 +15,8 @@ if (!isset($_SESSION['user_login'])) {
 }
 else {
 	$user = $_SESSION['user_login'];
-	$result = mysql_query("SELECT * FROM user WHERE id='$user'");
-		$get_user_email = mysql_fetch_assoc($result);
+	$result = mysqli_query($con, "SELECT * FROM user WHERE id='$user'");
+		$get_user_email = mysqli_fetch_assoc($result);
 
 			$uname_db = $get_user_email['firstName'];
 			$ulast_db=$get_user_email['lastName'];
@@ -27,9 +27,9 @@ else {
 }
 
 
-$getposts = mysql_query("SELECT * FROM products WHERE id ='$poid'") or die(mysql_error());
-					if (mysql_num_rows($getposts)) {
-						$row = mysql_fetch_assoc($getposts);
+$getposts = mysqli_query($con, "SELECT * FROM products WHERE id ='$poid'") or die(mysqlI_error($con));
+					if (mysqli_num_rows($getposts)) {
+						$row = mysqli_fetch_assoc($getposts);
 						$id = $row['id'];
 						$pName = $row['pName'];
 						$price = $row['price'];
@@ -82,7 +82,7 @@ $del = $_POST['Delivery'];
 						";
 						//if (@mail($uemail_db,"eBuyBD Product Order",$msg, "From:eBuyBD <no-reply@ebuybd.xyz>")) {
 							
-						if(mysql_query("INSERT INTO orders (uid,pid,quantity,oplace,mobile,odate,delivery) VALUES ('$user','$poid',$quan,'$_POST[address]','$_POST[mobile]','$d','$del')")){
+						if(mysqli_query($con, "INSERT INTO orders (uid,pid,quantity,oplace,mobile,odate,delivery) VALUES ('$user','$poid',$quan,'$_POST[address]','$_POST[mobile]','$d','$del')")){
 
 							//success message
 							
@@ -192,8 +192,8 @@ $del = $_POST['Delivery'];
 
 
 						$user = $_SESSION['user_login'];
-	$result = mysql_query("SELECT * FROM user WHERE id='$user'");
-		$get_user_email = mysql_fetch_assoc($result);
+	$result = mysqli_query($con, "SELECT * FROM user WHERE id='$user'");
+		$get_user_email = mysqli_fetch_assoc($result);
 			$uname_db = $get_user_email['firstName'];
 			$ulast_db=$get_user_email['lastName'];
 			$uemail_db = $get_user_email['email'];
