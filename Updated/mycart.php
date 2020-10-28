@@ -9,13 +9,13 @@ if (!isset($_SESSION['user_login'])) {
 else {
 	$user = $_SESSION['user_login'];
 	$result = mysqli_query($con, "SELECT * FROM user WHERE id='$user'");
-		$get_user_email = mysqli_fetch_assoc($result);
-			$uname_db = $get_user_email['firstName'];
-			$uemail_db = $get_user_email['email'];
-			$ulast_db=$get_user_email['lastName'];
+	$get_user_email = mysqli_fetch_assoc($result);
+	$uname_db = $get_user_email != null ? $get_user_email['firstName'] : null;
+	$uemail_db = $get_user_email != null ? $get_user_email['email'] : null;
+	$ulast_db= $get_user_email != null ? $get_user_email['lastName'] : null;
 
-			$umob_db = $get_user_email['mobile'];
-			$uadd_db = $get_user_email['address'];
+	$umob_db = $get_user_email != null ? $get_user_email['mobile'] : null;
+	$uadd_db = $get_user_email != null ? $get_user_email['address'] : null;
 }
 
 if (isset($_REQUEST['uid'])) {
