@@ -8,8 +8,8 @@ if (!isset($_SESSION['user_login'])) {
 }
 else {
 	$user = $_SESSION['user_login'];
-	$result = mysql_query("SELECT * FROM user WHERE id='$user'");
-		$get_user_email = mysql_fetch_assoc($result);
+	$result = mysqli_query($con, "SELECT * FROM user WHERE id='$user'");
+		$get_user_email = mysqli_fetch_assoc($result);
 			$uname_db = $get_user_email['firstName'];
 			$uemail_db = $get_user_email['email'];
 
@@ -19,7 +19,7 @@ else {
 
 if (isset($_REQUEST['uid'])) {
 	
-	$user2 = mysql_real_escape_string($_REQUEST['uid']);
+	$user2 = mysqli_real_escape_string($con, $_REQUEST['uid']);
 	if($user != $user2){
 		header('location: index.php');
 	}
@@ -28,8 +28,8 @@ if (isset($_REQUEST['uid'])) {
 }
 
 if (isset($_REQUEST['cid'])) {
-		$cid = mysql_real_escape_string($_REQUEST['cid']);
-		if(mysql_query("DELETE FROM orders WHERE pid='$cid' AND uid='$user'")){
+		$cid = mysqli_real_escape_string($con, $_REQUEST['cid']);
+		if(mysqli_query($con, "DELETE FROM orders WHERE pid='$cid' AND uid='$user'")){
 		header('location: mycart.php?uid='.$user.'');
 	}else{
 		header('location: index.php');
@@ -119,15 +119,15 @@ $search_value = "";
 								<tr>
 									<?php include ( "inc/connect.inc.php");
 									$query = "SELECT * FROM cart WHERE uid='$user' ORDER BY id DESC";
-									$run = mysql_query($query);
-									while ($row=mysql_fetch_assoc($run)) {
+									$run = mysqli_query($con, $query);
+									while ($row=mysqli_fetch_assoc($run)) {
 										$pid = $row['pid'];
 										$quantity = $row['quantity'];
 										
 										//get product info
 										$query1 = "SELECT * FROM products WHERE id='$pid'";
-										$run1 = mysql_query($query1);
-										$row1=mysql_fetch_assoc($run1);
+										$run1 = mysqli_query($con, $query1);
+										$row1=mysqli_fetch_assoc($run1);
 										$pId = $row1['id'];
 										$pName = substr($row1['pName'], 0,50);
 										$price = $row1['price'];

@@ -8,8 +8,8 @@ if (!isset($_SESSION['admin_login'])) {
 }
 else {
 	$user = $_SESSION['admin_login'];
-	$result = mysql_query("SELECT * FROM admin WHERE id='$user'");
-		$get_user_email = mysql_fetch_assoc($result);
+	$result = mysqli_query($con, "SELECT * FROM admin WHERE id='$user'");
+		$get_user_email = mysqli_fetch_assoc($result);
 			$uname_db = $get_user_email['firstName'];
 			$utype_db=$get_user_email['type'];
 			if($utype_db == 'staff'){
@@ -44,19 +44,19 @@ $output = '
 
 $total = 0;
 $query = "SELECT * FROM orders WHERE dstatus='yes' ORDER BY id DESC";
-$run = mysql_query($query);
-while ($row=mysql_fetch_assoc($run)) {
+$run = mysqli_query($con, $query);
+while ($row=mysqli_fetch_assoc($run)) {
 	$uid = $row['uid'];
 	$productId = $row['pid'];
 	$quantity = $row['quantity'];
 	$query1 = "SELECT * FROM user WHERE id='$uid'";
-	$run1 = mysql_query($query1);
-	$row1=mysql_fetch_assoc($run1);
+	$run1 = mysqli_query($con, $query1);
+	$row1=mysqli_fetch_assoc($run1);
 	$FirstName = $row1['firstName'];
 
 	$query2 = "SELECT * FROM products WHERE id='$productId'";
-	$run2 = mysql_query($query2);
-	$row2=mysql_fetch_assoc($run2);
+	$run2 = mysqli_query($con, $query2);
+	$row2=mysqli_fetch_assoc($run2);
 	$pPrice = $row2['price'];
 	$payment = $pPrice * $quantity;
 	$total+=$payment;

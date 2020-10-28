@@ -10,9 +10,9 @@ if (!isset($_SESSION['admin_login'])) {
 else {
 	if (isset($_REQUEST['eoid'])) {
 	
-		$eoid = mysql_real_escape_string($_REQUEST['eoid']);
-		$getposts5 = mysql_query("SELECT * FROM orders WHERE id='$eoid'") or die(mysql_error());
-			if (mysql_num_rows($getposts5)){
+		$eoid = mysqli_real_escape_string($con, $_REQUEST['eoid']);
+		$getposts5 = mysqli_query($con, "SELECT * FROM orders WHERE id='$eoid'") or die(mysqlI_error($con));
+			if (mysqli_num_rows($getposts5)){
 
 			}else {
 				header('location: index.php');
@@ -21,15 +21,15 @@ else {
 		header('location: index.php');
 	}
 	$user = $_SESSION['admin_login'];
-	$result = mysql_query("SELECT * FROM admin WHERE id='$user'");
-	$get_user_email = mysql_fetch_assoc($result);
+	$result = mysqli_query($con, "SELECT * FROM admin WHERE id='$user'");
+	$get_user_email = mysqli_fetch_assoc($result);
 		$uname_db = $get_user_email['firstName'];
 		$type_db=$get_user_email['type'];
 		$utype_db=$get_user_email['type'];
 
 
-	$result1 = mysql_query("SELECT * FROM orders WHERE id='$eoid'");
-		$get_order_info = mysql_fetch_assoc($result1);
+	$result1 = mysqli_query($con, "SELECT * FROM orders WHERE id='$eoid'");
+		$get_order_info = mysqli_fetch_assoc($result1);
 			$eouid = $get_order_info['uid'];
 			$eopid = $get_order_info['pid'];
 			$eoquantity = $get_order_info['quantity'];
@@ -40,16 +40,16 @@ else {
 			$eodate = $get_order_info['odate'];
 			$eddate = $get_order_info['ddate'];
 
-			$result2 = mysql_query("SELECT * FROM user WHERE id='$eouid'");
-			$get_order_info2 = mysql_fetch_assoc($result2);
+			$result2 = mysqli_query($con, "SELECT * FROM user WHERE id='$eouid'");
+			$get_order_info2 = mysqli_fetch_assoc($result2);
 			$euname = $get_order_info2['firstName'];
 			$euemail = $get_order_info2['email'];
 			$eumobile = $get_order_info2['mobile'];
 }
 
-$getposts = mysql_query("SELECT * FROM products WHERE id ='$eopid'") or die(mysql_error());
-					if (mysql_num_rows($getposts)) {
-						$row = mysql_fetch_assoc($getposts);
+$getposts = mysqli_query($con, "SELECT * FROM products WHERE id ='$eopid'") or die(mysqlI_error($con));
+					if (mysqli_num_rows($getposts)) {
+						$row = mysqli_fetch_assoc($getposts);
 						$id = $row['id'];
 						$pName = $row['pName'];
 						$price = $row['price'];
@@ -74,7 +74,7 @@ $ddate = $_POST['ddate'];
 			throw new Exception('Status can not be empty');
 			
 		}
-				if(mysql_query("UPDATE orders SET dstatus='$eodstatus', ddate='$ddate', quantity='$dquantity' WHERE id='$eoid'")){
+				if(mysqli_query($con, "UPDATE orders SET dstatus='$eodstatus', ddate='$ddate', quantity='$dquantity' WHERE id='$eoid'")){
 					//success message
 				header('location: editorder.php?eoid='.$eoid.'');
 				$success_message = '
@@ -89,7 +89,7 @@ $ddate = $_POST['ddate'];
 }
 if (isset($_POST['delorder'])) {
 //triming name
-	if(mysql_query("DELETE FROM orders WHERE id='$eoid'")){
+	if(mysqli_query($con, "DELETE FROM orders WHERE id='$eoid'")){
 
 	header('location: orders.php');
 	}
