@@ -1,7 +1,7 @@
 # E-Commerce-Website-Using-PHP
 
 ## Summary
-Hello friends, This is my first full e-commerce project. This is free. Anybody can use and moderate this project.
+Hello friends, This is my first full e-commerce project. This is free. Anybody can use and moderate this project. Its a good project for making online business.
 
 ### Youtube
 Youtube preview link: https://www.youtube.com/watch?v=aYV4DOPtp3Y
