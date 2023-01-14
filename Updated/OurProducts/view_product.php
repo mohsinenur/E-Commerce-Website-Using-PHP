@@ -7,21 +7,21 @@ if (!isset($_SESSION['user_login'])) {
 }
 else {
 	$user = $_SESSION['user_login'];
-	$result = mysql_query("SELECT * FROM user WHERE id='$user'");
-		$get_user_email = mysql_fetch_assoc($result);
+	$result = mysqli_query($con, "SELECT * FROM user WHERE id='$user'");
+		$get_user_email = mysqli_fetch_assoc($result);
 			$uname_db = $get_user_email['firstName'];
 }
 if (isset($_REQUEST['pid'])) {
 	
-	$pid = mysql_real_escape_string($_REQUEST['pid']);
+	$pid = mysqli_real_escape_string($con, $_REQUEST['pid']);
 }else {
 	header('location: index.php');
 }
 
 
-$getposts = mysql_query("SELECT * FROM products WHERE id ='$pid'") or die(mysql_error());
-					if (mysql_num_rows($getposts)) {
-						$row = mysql_fetch_assoc($getposts);
+$getposts = mysqli_query($con, "SELECT * FROM products WHERE id ='$pid'") or die(mysqlI_error($con));
+					if (mysqli_num_rows($getposts)) {
+						$row = mysqli_fetch_assoc($getposts);
 						$id = $row['id'];
 						$pName = $row['pName'];
 						$price = $row['price'];
@@ -34,11 +34,11 @@ $getposts = mysql_query("SELECT * FROM products WHERE id ='$pid'") or die(mysql_
 
 
 if (isset($_POST['addcart'])) {
-	$getposts = mysql_query("SELECT * FROM cart WHERE pid ='$pid' AND uid='$user'") or die(mysql_error());
-	if (mysql_num_rows($getposts)) {
+	$getposts = mysqli_query($con, "SELECT * FROM cart WHERE pid ='$pid' AND uid='$user'") or die(mysqlI_error($con));
+	if (mysqli_num_rows($getposts)) {
 		header('location: ../mycart.php?uid='.$user.'');
 	}else{
-		if(mysql_query("INSERT INTO cart (uid,pid,quantity) VALUES ('$user','$pid', 1)")){
+		if(mysqli_query($con, "INSERT INTO cart (uid,pid,quantity) VALUES ('$user','$pid', 1)")){
 			header('location: ../mycart.php?uid='.$user.'');
 		}else{
 			header('location: index.php');

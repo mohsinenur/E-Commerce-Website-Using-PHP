@@ -8,8 +8,8 @@ if (!isset($_SESSION['admin_login'])) {
 }
 else {
 	$user = $_SESSION['admin_login'];
-	$result = mysql_query("SELECT * FROM admin WHERE id='$user'");
-		$get_user_email = mysql_fetch_assoc($result);
+	$result = mysqli_query($con, "SELECT * FROM admin WHERE id='$user'");
+		$get_user_email = mysqli_fetch_assoc($result);
 			$uname_db = $get_user_email['firstName'];
 			$utype_db=$get_user_email['type'];
 }
@@ -104,8 +104,8 @@ else {
 								<tr>
 									<?php include ( "../inc/connect.inc.php");
 									$query = "SELECT * FROM user ORDER BY id DESC";
-									$run = mysql_query($query);
-									while ($row=mysql_fetch_assoc($run)) {
+									$run = mysqli_query($con, $query);
+									while ($row=mysqli_fetch_assoc($run)) {
 										$id = $row['id'];
 										$fname = $row['firstName'];
 										$lname = $row['lastName'];
