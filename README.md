@@ -1,3 +1,4 @@
+# A brilliant source for freshers looking to get a hang on developing website using PHP and MYSQL
 # E-Commerce-Website-Using-PHP
 
 ## Summary
