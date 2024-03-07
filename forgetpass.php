@@ -19,7 +19,7 @@
 			</div>
 			<div style="float: left; margin: 5px 0px 0px 23px;">
 				<a href="index.php">
-					<img style=" height: 75px; width: 130px;" src="image/ebuybdlogo.png">
+					<img style=" height: 75px; width: 130px;" src="image/cart.png">
 				</a>
 			</div>
 			<div class="">
@@ -44,7 +44,7 @@
 								<div class="signup_form">
 									<div>
 										<td>
-											<input type="text" name="username" class="email signupbox" placeholder="Write eBuyBD Email..." size="30" required autofocus>
+											<input type="text" name="username" class="email signupbox" placeholder="Write  Email..." size="30" required autofocus>
 										</td>
 									</div>
 									<div>

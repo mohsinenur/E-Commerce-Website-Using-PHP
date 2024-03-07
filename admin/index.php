@@ -8,9 +8,10 @@ if (!isset($_SESSION['admin_login'])) {
 }
 else {
 	$user = $_SESSION['admin_login'];
-	$result = mysql_query("SELECT * FROM admin WHERE id='$user'");
-		$get_user_email = mysql_fetch_assoc($result);
+	$result = mysqli_query($con, "SELECT * FROM admin WHERE id='$user'");
+		$get_user_email = mysqli_fetch_assoc($result);
 			$uname_db = $get_user_email['firstName'];
+			$utype_db=$get_user_email['type'];
 }
 $search_value = "";
 ?>
@@ -23,7 +24,7 @@ $search_value = "";
 		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 		<script src="/js/homeslideshow.js"></script>
 	</head>
-	<body style="min-width: 980px; background-image: url(../image/homebackgrndimg4.png);">
+	<body style="min-width: 980px; background-image: url(../image/homebackgrndimg1.jpg);">
 		<div class="homepageheader">
 			<div class="signinButton loginButton">
 				<div class="uiloginbutton signinButton loginButton" style="margin-right: 40px;">
@@ -40,7 +41,7 @@ $search_value = "";
 				<div class="uiloginbutton signinButton loginButton" style="">
 					<?php 
 						if ($user!="") {
-							echo '<a style="text-decoration: none;color: #fff;" href="login.php">Hi '.$uname_db.'</a>';
+							echo '<a style="text-decoration: none;color: #fff;" href="update_admin.php">Hi '.$uname_db.'</br><span style="color: #010a0e">'.$utype_db.'</span></a>';
 						}
 						else {
 							echo '<a style="text-decoration: none;color: #fff;" href="login.php">LOG IN</a>';
@@ -50,7 +51,7 @@ $search_value = "";
 			</div>
 			<div style="float: left; margin: 5px 0px 0px 23px;">
 				<a href="index.php">
-					<img style=" height: 75px; width: 130px;" src="../image/ebuybdlogo.png">
+					<img style=" height: 75px; width: 130px;" src="../image/cart.png">
 				</a>
 			</div>
 			<div class="">
@@ -66,19 +67,26 @@ $search_value = "";
 			<table>
 				<tr>
 					<th>
-						<a href="index.php" style="text-decoration: none;color: #fff;padding: 4px 12px;background-color: #24bfae;border-radius: 12px;">Home</a>
+						<a href="index.php" style="text-decoration: none;color: #040403;padding: 4px 12px;background-color: #24bfae;border-radius: 12px;">Home</a>
 					</th>
-					<th><a href="addproduct.php" style="text-decoration: none;color: #ddd;padding: 4px 12px;background-color: #c7587e;border-radius: 12px;">Add Product</a></th>
-					<th><a href="newadmin.php" style="text-decoration: none;color: #ddd;padding: 4px 12px;background-color: #c7587e;border-radius: 12px;">New Admin</a></th>
-					<th><a href="allproducts.php" style="text-decoration: none;color: #ddd;padding: 4px 12px;background-color: #c7587e;border-radius: 12px;">All Products</a></th>
-					<th><a href="orders.php" style="text-decoration: none;color: #ddd;padding: 4px 12px;background-color: #c7587e;border-radius: 12px;">Orders</a></th>
+					<th><a href="addproduct.php" style="text-decoration: none;color: #040403;padding: 4px 12px;background-color: #e6b7b8;border-radius: 12px;">Add Product</a></th>
+					
+					<th><a href="orders.php" style="text-decoration: none;color: #040403;padding: 4px 12px;background-color: #e6b7b8;border-radius: 12px;">Orders</a></th>
+				<th><a href="DeliveryRecords.php" style="text-decoration: none;color: #040403;padding: 4px 12px;background-color: #e6b7b8;border-radius: 12px;">DeliveryRecords</a></th>
+					<?php 
+						if($utype_db == 'admin'){
+							echo '<th><a href="report.php" style="text-decoration: none;color: #040403;padding: 4px 12px;background-color: #e6b7b8;border-radius: 12px;">Reports</a></th>
+								<th><a href="newadmin.php" style="text-decoration: none;color: #040403;padding: 4px 12px;background-color: #e6b7b8;;border-radius: 12px;">New Admin</a></th>';
+						}
+					?>
+
 				</tr>
 			</table>
 		</div>
-		<div class="home-welcome">
+		<div class="home-welcome" style="text-align: center; padding-bottom:20px; ">
 			<div class="home-welcome-text">
 				<h1>Welcome To Admin Panel</h1>
-				<h2>You have all permition to do!</h2>
+				<h2>You have all permission to do!</h2>
 			</div>
 		</div>
 	</body>

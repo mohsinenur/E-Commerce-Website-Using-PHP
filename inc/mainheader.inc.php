@@ -24,7 +24,7 @@
 			</div>
 			<div style="float: left; margin: 5px 0px 0px 23px;">
 				<a href="../index.php">
-					<img style=" height: 75px; width: 130px;" src="../image/ebuybdlogo.png">
+					<img style=" height: 75px; width: 130px;" src="../image/cart.png">
 				</a>
 			</div>
 			<div class="">

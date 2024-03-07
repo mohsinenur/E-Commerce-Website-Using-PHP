@@ -8,13 +8,14 @@ if (!isset($_SESSION['admin_login'])) {
 }
 else {
 	$user = $_SESSION['admin_login'];
-	$result = mysql_query("SELECT * FROM admin WHERE id='$user'");
-		$get_user_email = mysql_fetch_assoc($result);
+	$result = mysqli_query($con, "SELECT * FROM admin WHERE id='$user'");
+		$get_user_email = mysqli_fetch_assoc($result);
 			$uname_db = $get_user_email['firstName'];
+			$utype_type=$get_user_email['type'];
 }
 if (isset($_REQUEST['keywords'])) {
 
-	$epid = mysql_real_escape_string($_REQUEST['keywords']);
+	$epid = mysqli_real_escape_string($con, $_REQUEST['keywords']);
 	if($epid != "" && ctype_alnum($epid)){
 		
 	}else {
@@ -59,7 +60,7 @@ $search_value = trim($_GET['keywords']);
 			</div>
 			<div style="float: left; margin: 5px 0px 0px 23px;">
 				<a href="index.php">
-					<img style=" height: 75px; width: 130px;" src="../image/ebuybdlogo.png">
+					<img style=" height: 75px; width: 130px;" src="../image/cart.png">
 				</a>
 			</div>
 			<div class="">
@@ -81,8 +82,10 @@ $search_value = trim($_GET['keywords']);
 					</th>
 					<th><a href="addproduct.php" style="text-decoration: none;color: #ddd;padding: 4px 12px;background-color: #c7587e;border-radius: 12px;">Add Product</a></th>
 					<th><a href="newadmin.php" style="text-decoration: none;color: #ddd;padding: 4px 12px;background-color: #c7587e;border-radius: 12px;">New Admin</a></th>
-					<th><a href="allproducts.php" style="text-decoration: none;color: #ddd;padding: 4px 12px;background-color: #c7587e;border-radius: 12px;">All Products</a></th>
 					<th><a href="orders.php" style="text-decoration: none;color: #ddd;padding: 4px 12px;background-color: #c7587e;border-radius: 12px;">Orders</a></th>
+					<th><a href="DeliveryRecords.php" style="text-decoration: none;color: #ddd;padding: 4px 12px;background-color: #c7587e;border-radius: 12px;">DeliveryRecords</a></th>
+					<th><a href="report.php" style="text-decoration: none;color: #ddd;padding: 4px 12px;background-color: #c7587e;border-radius: 12px;">Reports</a></th>
+
 				</tr>
 			</table>
 		</div>
@@ -104,13 +107,14 @@ $search_value = trim($_GET['keywords']);
 					<?php include ( "../inc/connect.inc.php");
 					$search_value = trim($_GET['keywords']);
 					$query = "SELECT * FROM products WHERE pName like '%$search_value%'  ORDER BY id DESC";
-					$run = mysql_query($query);
-					if ( $total = mysql_num_rows($run)) {
-					while ($row=mysql_fetch_assoc($run)) {
+					$run = mysqli_query($con, $query);
+					if ( $total = mysqli_num_rows($run)) {
+					while ($row=mysqli_fetch_assoc($run)) {
 						$id = $row['id'];
 						$pName = substr($row['pName'], 0,50);
 						$descri = $row['description'];
 						$price = $row['price'];
+						$piece=$row['piece'];
 						$available = $row['available'];
 						$category = $row['category'];
 						$type = $row['type'];
@@ -123,6 +127,7 @@ $search_value = trim($_GET['keywords']);
 					<th><?php echo $pName; ?></th>
 					<th><?php echo $descri; ?></th>
 					<th><?php echo $price; ?></th>
+					<th><?php echo $piece;?></th>
 					<th><?php echo $available; ?></th>
 					<th><?php echo $category; ?></th>
 					<th><?php echo $type; ?></th>

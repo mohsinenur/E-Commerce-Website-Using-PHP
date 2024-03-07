@@ -1,3 +1,4 @@
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -15,7 +16,7 @@ time, mark, audio, video {
   padding: 0;
   border: 0;
   font: inherit;
-  vertical-align: baseline;
+  vertical-align: baseline;ss
   box-sizing: border-box;
 }
 h3 {
@@ -76,10 +77,10 @@ body{
   background-attachment: initial;
   background-origin: initial;
   background-clip: initial;
-  background-color: rgb(199, 88, 126);
+  background-color: #7db905;;
 }
 .loginButton .signinButton {
-	color: #FFFFFF;
+  color: #FFFFFF;
     background: #169E8F;
     border: 1px solid #FFFFFF;
     cursor: pointer;
@@ -87,7 +88,7 @@ body{
     font-weight: bold;
     line-height: 15px;
     padding: 12px 24px;
-	border-radius: 16px;
+  border-radius: 16px;
     text-align: center;
     text-decoration: none;
     float: right; 
@@ -99,37 +100,37 @@ body{
 }
 
 #newsearch{
-	float:left;
-	padding:15px;
+  float:left;
+  padding:15px;
 }
 .srctextinput{
-	margin: 0px;
-	padding: 9px 15px;
-	font-family: Arial, Helvetica, sans-serif;
-	font-size:20px;
-	border:1px solid #0076a3; border-right:0px;
-	border-top-left-radius: 5px 5px;
-	border-bottom-left-radius: 5px 5px;
-	width: 335px;
+  margin: 0px;
+  padding: 9px 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size:20px;
+  border:1px solid #0076a3; border-right:0px;
+  border-top-left-radius: 5px 5px;
+  border-bottom-left-radius: 5px 5px;
+  width: 335px;
 }
 .srcbutton {
-	margin: 0;
-	padding: 9px 5px;
-	font-family: Arial, Helvetica, sans-serif;
-	font-size:20px;
-	outline: none;
-	cursor: pointer;
-	text-align: center;
-	text-decoration: none;
-	color: #ffffff;
-	border: solid 1px #0076a3; border-right:0px;
-	background: #169E8F;
-	border-top-right-radius: 5px 5px;
-	border-bottom-right-radius: 5px 5px;
+  margin: 0;
+  padding: 9px 5px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size:20px;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  border: solid 1px #0076a3; border-right:0px;
+  background: #169E8F;
+  border-top-right-radius: 5px 5px;
+  border-bottom-right-radius: 5px 5px;
 }
 .srcbutton:hover {
-	text-decoration: none;
-	background: #24bfae;
+  text-decoration: none;
+  background: #24bfae;
 }
 
 .pquantys {
@@ -164,37 +165,38 @@ body{
 
 /* Fixes submit button height problem in Firefox */
 .srcbutton::-moz-focus-inner {
-  	border: 0;
+    border: 0;
 }
 .srcclear{
-	clear:both;
+  clear:both;
 }
 .home-welcome {
-	margin-top: 0px;
+  margin-top: 0px;
 }
-.home-welcome-text { 
-	 
-	height: 800px;
+
+.home-welcome {
+    margin-top: 0px;
 }
-.home-welcome-text h1 {
- 	text-align: center; 
- 	font-size: 85px; 
- 	padding-top: 150px; 
- 	font-weight: bold; 
- 	color: #ffffff;
- }
+
+ .home-welcome-text h1 {
+    text-align: center;
+    font-size: 55px;
+    font-weight: bold;
+    color: #41a62d;
+}
+ 
  .home-welcome-text h2 {
- 	text-align: center;   
- 	font-weight: bold; 
- 	color: #ffffff;
-  font-size: 30px;
- }
+    text-align: center;
+    font-weight: bold;
+    color: #41a62d;
+    font-size: 30px;
+}
  .home-footer {
- 	text-align: center;
-	color: #ffffff;
-	background-color: #3f3838;
-	font-size: 18px;
-	padding: 20px 10px;
+  text-align: center;
+  color: #ffffff;
+  background-color: #3f3838;
+  font-size: 18px;
+  padding: 20px 10px;
  }
 
 /*sign in */
@@ -206,6 +208,65 @@ body{
   font-weight: bold;
   text-align: center;
 }
+
+
+
+.label_content h5 {
+         margin: 0px 100 0 0;
+        padding: 0px 0px 20px 0px;
+        font-size: 30px;
+        color: #4a6b67;
+        font-weight: bold;
+        text-align: left;
+      }
+.label_content1 h5
+      {
+         margin: 0px 100 0 0;
+        padding: 0px 0px 20px 0px;
+        font-size: 30px;
+        color: #4a6b67;
+        font-weight: bold;
+        text-align: left;
+      }
+.label_content11 h5
+      {
+         margin: 0px 100 0 0;
+        padding: 0px 0px 20px 0px;
+        font-size: 30px;
+        color: #4a6b67;
+        font-weight: bold;
+        text-align: left;
+      }
+.label_content2 h5
+      {
+         margin: 0px 100 0 0;
+        padding: 0px 0px 20px 0px;
+        font-size: 30px;
+        color: #4a6b67;
+        font-weight: bold;
+        text-align: left;
+      }
+.label_content3 h5
+      {
+         margin: 0px 100 0 0;
+        padding: 0px 0px 20px 0px;
+        font-size: 30px;
+        color: #4a6b67;
+        font-weight: bold;
+        text-align: left;
+      }
+.label_content4 h5
+      {
+         margin: 0px 100 0 0;
+        padding: 0px 0px 20px 0px;
+        font-size: 30px;
+        color: #4a6b67;
+        font-weight: bold;
+        text-align: left;
+      }
+
+
+
 .signupform_text {
   font-size: 18px;
   padding: 0;
@@ -342,8 +403,8 @@ body{
     border: 2px solid #7C7979;
 }
 .forgetpass {
-	text-decoration: none; 
-	color: #186fe0
+  text-decoration: none; 
+  color: #186fe0
 }
 .forgetpass:hover {
   color: red;
@@ -358,14 +419,14 @@ body{
     font-size: 20px;
 }
 .home-prodlist-img:hover {
-    background-color: #9a3489;
+    background-color: #fff;
     border-radius: 8px;
     color: #fff;
 }
 .home-prodlist-imgi {
-    height: 350px; 
+    height: 270px; 
     width: 300px; 
-    padding: 2px;
+    padding: 0px;
     border: 1px solid #847b7b;
     border-radius: 8px;
 }
@@ -373,7 +434,7 @@ body{
     line-height: 1.3;
     font-weight: bold;
     color: #fff;
-    padding: 110px 20px 20px 145px; 
+    padding: 110px 0px 20px 50px; 
     background-color: #169e8f;
     text-align: center;
     font-size: 25px;

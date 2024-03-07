@@ -10,21 +10,23 @@ if (!isset($_SESSION['admin_login'])) {
 else {
 	if (isset($_REQUEST['epid'])) {
 	
-		$epid = mysql_real_escape_string($_REQUEST['epid']);
+		$epid = mysqli_real_escape_string($con, $_REQUEST['epid']);
 	}else {
 		header('location: index.php');
 	}
 	$user = $_SESSION['admin_login'];
-	$result = mysql_query("SELECT * FROM admin WHERE id='$user'");
-	$get_user_email = mysql_fetch_assoc($result);
+	$result = mysqli_query($con, "SELECT * FROM admin WHERE id='$user'");
+	$get_user_email = mysqli_fetch_assoc($result);
 		$uname_db = $get_user_email['firstName'];
+		$utype_db=$get_user_email['type'];
 
 }
-$getposts = mysql_query("SELECT * FROM products WHERE id ='$epid'") or die(mysql_error());
-	if (mysql_num_rows($getposts)) {
-		$row = mysql_fetch_assoc($getposts);
+$getposts = mysqli_query($con, "SELECT * FROM products WHERE id ='$epid'") or die(mysqlI_error($con));
+	if (mysqli_num_rows($getposts)) {
+		$row = mysqli_fetch_assoc($getposts);
 		$id = $row['id'];
 		$pName = $row['pName'];
+		$piece=$row['piece'];
 		$price = $row['price'];
 		$description = $row['description'];
 		$picture = $row['picture'];
@@ -42,6 +44,7 @@ $getposts = mysql_query("SELECT * FROM products WHERE id ='$epid'") or die(mysql
 if (isset($_POST['updatepro'])) {
 	$pname = $_POST['pname'];
 	$price = $_POST['price'];
+	$piece=$_POST['piece'];
 	$available = $_POST['available'];
 	$category = $_POST['category'];
 	$type = $_POST['type'];
@@ -50,7 +53,7 @@ if (isset($_POST['updatepro'])) {
 	//triming name
 	$_POST['pname'] = trim($_POST['pname']);
 
-	if($result = mysql_query("UPDATE products SET pName='$_POST[pname]',price='$_POST[price]',description='$_POST[descri]',available='$_POST[available]',category='$_POST[category]',type='$_POST[type]',item='$_POST[item]',pCode='$_POST[code]' WHERE id='$epid'")){
+	if($result = mysqli_query($con, "UPDATE products SET pName='$_POST[pname]',price='$_POST[price]',description='$_POST[descri]',available='$_POST[available]',category='$_POST[category]',type='$_POST[type]',item='$_POST[item]',pCode='$_POST[code]' WHERE id='$epid'")){
 		header("Location: editproduct.php?epid=".$epid."");
 
 	}else {
@@ -85,7 +88,7 @@ if (((@$_FILES['profilepic']['type']=='image/jpeg') || (@$_FILES['profilepic']['
 	}else {
 		if(move_uploaded_file(@$_FILES["profilepic"]["tmp_name"], "../image/product/$item/".$filename)){
 			$photos = $filename;
-			if($result = mysql_query("UPDATE products SET picture='$photos' WHERE id='$epid'")){
+			if($result = mysqli_query($con, "UPDATE products SET picture='$photos' WHERE id='$epid'")){
 
 				$delete_file = unlink("../image/product/$item/".$picture);
 				header("Location: editproduct.php?epid=".$epid."");
@@ -111,12 +114,12 @@ if (((@$_FILES['profilepic']['type']=='image/jpeg') || (@$_FILES['profilepic']['
 
 if (isset($_POST['delprod'])) {
 //triming name
-	$getposts1 = mysql_query("SELECT pid FROM orders WHERE pid='$epid'") or die(mysql_error());
-					if ($ttl = mysql_num_rows($getposts1)) {
+	$getposts1 = mysqli_query($con, "SELECT pid FROM orders WHERE pid='$epid'") or die(mysqlI_error($con));
+					if ($ttl = mysqli_num_rows($getposts1)) {
 						$error_message = "You can not delete this product.<br>Someone ordered this.";
 					}
 					else {
-						if(mysql_query("DELETE FROM products WHERE id='$epid'")){
+						if(mysqli_query($con, "DELETE FROM products WHERE id='$epid'")){
 						header('location: orders.php');
 						}
 					}
@@ -129,11 +132,11 @@ $search_value = "";
 <!DOCTYPE html>
 <html>
 <head>
-	<title>SAREE</title>
+	<title>Edit Product</title>
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body style="background-image: url(../image/homebackgrndimg1.png);">
+<body style="background-image: url(../image/homebackgrndimg1.jpg);">
 	<div class="homepageheader">
 			<div class="signinButton loginButton">
 				<div class="uiloginbutton signinButton loginButton" style="margin-right: 40px;">
@@ -147,7 +150,7 @@ $search_value = "";
 				<div class="uiloginbutton signinButton loginButton">
 					<?php 
 						if ($user!="") {
-							echo '<a style="text-decoration: none;color: #fff;" href="login.php">Hi '.$uname_db.'</a>';
+							echo '<a style="text-decoration: none;color: #fff;" href="login.php">Hi '.$uname_db.'</br><span style="color: #de2a74">'.$utype_db.'</span></a>';
 						}
 						else {
 							echo '<a style="text-decoration: none;color: #fff;" href="login.php">LOG IN</a>';
@@ -157,7 +160,7 @@ $search_value = "";
 			</div>
 			<div style="float: left; margin: 5px 0px 0px 23px;">
 				<a href="index.php">
-					<img style=" height: 75px; width: 130px;" src="../image/ebuybdlogo.png">
+					<img style=" height: 75px; width: 130px;" src="../image/cart.png">
 				</a>
 			</div>
 			<div id="srcheader">
@@ -173,12 +176,14 @@ $search_value = "";
 			<table>
 				<tr>
 					<th>
-						<a href="index.php" style="text-decoration: none;color: #fff;padding: 4px 12px;background-color: #c7587e;border-radius: 12px;">Home</a>
+						<a href="index.php" style="text-decoration: none;color: #040403;padding: 4px 12px;background-color: #e6b7b8;border-radius: 12px;">Home</a>
 					</th>
-					<th><a href="addproduct.php" style="text-decoration: none;color: #ddd;padding: 4px 12px;background-color: #c7587e;border-radius: 12px;">Add Product</a></th>
-					<th><a href="newadmin.php" style="text-decoration: none;color: #ddd;padding: 4px 12px;background-color: #c7587e;border-radius: 12px;">New Admin</a></th>
-					<th><a href="allproducts.php" style="text-decoration: none;color: #ddd;padding: 4px 12px;background-color: #c7587e;border-radius: 12px;">All Products</a></th>
-					<th><a href="orders.php" style="text-decoration: none;color: #ddd;padding: 4px 12px;background-color: #c7587e;border-radius: 12px;">Orders</a></th>
+					<th><a href="addproduct.php" style="text-decoration: none;color: #040403;padding: 4px 12px;background-color: #e6b7b8;border-radius: 12px;">Add Product</a></th>
+					<th><a href="newadmin.php" style="text-decoration: none;color: #040403;padding: 4px 12px;background-color: #e6b7b8;border-radius: 12px;">New Admin</a></th>
+					<th><a href="orders.php" style="text-decoration: none;color: #040403;padding: 4px 12px;background-color: #e6b7b8;border-radius: 12px;">Orders</a></th>
+					<th><a href="DeliveryRecords.php" style="text-decoration: none;color:  #040403;padding: 4px 12px;background-color: #e6b7b8;border-radius: 12px;">DeliveryRecords</a></th>
+					<th><a href="report.php" style="text-decoration: none;color: #040403;padding: 4px 12px;background-color: #e6b7b8;border-radius: 12px;">Reports</a></th>
+
 				</tr>
 			</table>
 		</div>
@@ -206,6 +211,19 @@ $search_value = "";
 										</td>
 									</div>
 									<div>
+
+									<div class="label_content11" style="float: left;">
+  											<h5>Piece(unit):</h5>
+  											</div>
+											<td >
+											<input name="piece" style="margin-left: 100px; id="piece" required="required" class="piece signupbox" type="text" size="30" value="'.$piece.'" >
+											</td>
+											</div></br>
+
+
+
+
+
 										<td>
 											<input name="available" placeholder="Available Quantity" required="required" class="email signupbox" type="text" size="30" value="'.$available.'">
 										</td>
@@ -215,15 +233,7 @@ $search_value = "";
 											<input name="descri" id="first_name" placeholder="Description" required="required" class="first_name signupbox" type="text" size="30" value="'.$description.'" >
 										</td>
 									</div>
-									<div>
-										<td>
-											<select name="category" required="required" style=" font-size: 20px;
-										font-style: italic;margin-bottom: 3px;margin-top: 0px;padding: 14px;line-height: 25px;border-radius: 4px;border: 1px solid #169E8F;color: #169E8F;margin-left: 0;width: 300px;background-color: transparent;" class="">
-												<option selected value="'.$category.'">'.$categoryu.'</option>
-												<option value="women">Women</option>
-											</select>
-										</td>
-									</div>
+									
 									<div>
 										<select name="type" required="required" style=" font-size: 20px;
 										font-style: italic;margin-bottom: 3px;margin-top: 0px;padding: 14px;line-height: 25px;border-radius: 4px;border: 1px solid #169E8F;color: #169E8F;margin-left: 0;width: 300px;background-color: transparent;" class="">
@@ -237,14 +247,14 @@ $search_value = "";
 											<select name="item" required="required" style=" font-size: 20px;
 										font-style: italic;margin-bottom: 3px;margin-top: 0px;padding: 14px;line-height: 25px;border-radius: 4px;border: 1px solid #169E8F;color: #169E8F;margin-left: 0;width: 300px;background-color: transparent;" class="">
 												<option selected value="'.$item.'">'.$itemu.'</option>
-												<option value="saree">Saree</option>
-												<option value="ornament">Ornaments</option>
-												<option value="watch">Watch</option>
-												<option value="tshirt">T-Shirt</option>
-												<option value="hijab">Hijab</option>
-												<option value="perfume">Perfume</option>
-												<option value="footwear">Footwear</option>
-												<option value="toiletry">Toiletry</option>
+												<option value="noodles">Noodles/Canned</option>
+												<option value="seasoning">Condiments</option>
+												<option value="drink">Drinks</option>
+												<option value="soap">Soao&Detergent</option>
+												<option value="sweet">Sweets</option>
+												<option value="snack">Snacks</option>
+												<option value="shampoo">Shampoo</option>
+												<option value="hygiene">Hygiene</option>
 												<option value="Other">Other</option>
 											</select>
 										</td>
