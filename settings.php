@@ -8,8 +8,8 @@ if (!isset($_SESSION['user_login'])) {
 }
 else {
 	$user = $_SESSION['user_login'];
-	$result = mysqli_query($con, "SELECT * FROM user WHERE id='$user'");
-		$get_user_email = mysqli_fetch_assoc($result);
+	$result = mysql_query("SELECT * FROM user WHERE id='$user'");
+		$get_user_email = mysql_fetch_assoc($result);
 			$uname_db = $get_user_email['firstName'];
 			$uemail_db = $get_user_email['email'];
 			$upass = $get_user_email['password'];
@@ -20,7 +20,7 @@ else {
 
 if (isset($_REQUEST['uid'])) {
 	
-	$user2 = mysqli_real_escape_string($con, $_REQUEST['uid']);
+	$user2 = mysql_real_escape_string($_REQUEST['uid']);
 	if($user != $user2){
 		header('location: index.php');
 	}
@@ -44,7 +44,7 @@ $npass1 = $_POST['npass1'];
 				if( md5($opass) == $upass){
 					if($npass == $npass1){
 						$npass = md5($npass);
-						mysqli_query($con, "UPDATE user SET password='$npass' WHERE id='$user'");
+						mysql_query("UPDATE user SET password='$npass' WHERE id='$user'");
 						$success_message = '
 						<div class="signupform_text" style="font-size: 18px; text-align: center;">
 						<font face="bookman">
@@ -73,7 +73,7 @@ $npass1 = $_POST['npass1'];
 				}
 
 			if($uemail_db != $email) {
-				if(mysqli_query($con, "UPDATE user SET  email='$email' WHERE id='$user'")){
+				if(mysql_query("UPDATE user SET  email='$email' WHERE id='$user'")){
 					//success message
 					$success_message = '
 					<div class="signupform_text" style="font-size: 18px; text-align: center;">
@@ -95,11 +95,11 @@ $npass1 = $_POST['npass1'];
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Noodles&Canned</title>
+	<title>SAREE</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body style="background-image: url(image/homebackgrndimg1.jpg);">
+<body style="background-image: url(image/homebackgrndimg1.png);">
 	<div class="homepageheader">
 			<div class="signinButton loginButton">
 				<div class="uiloginbutton signinButton loginButton" style="margin-right: 40px;">
@@ -126,7 +126,7 @@ $npass1 = $_POST['npass1'];
 			</div>
 			<div style="float: left; margin: 5px 0px 0px 23px;">
 				<a href="index.php">
-					<img style=" height: 75px; width: 130px;" src="image/cart.png">
+					<img style=" height: 75px; width: 130px;" src="image/ebuybdlogo.png">
 				</a>
 			</div>
 			<div class="">
@@ -138,50 +138,58 @@ $npass1 = $_POST['npass1'];
 				</div>
 			</div>
 		</div>
-		<div class="categolis">
-			<table>
-				<tr>
-					<th><?php echo '<a href="mycart.php?uid='.$user.'" style="text-decoration: none;color: #040403;padding: 4px 12px;background-color: #fff;border-radius: 12px;">My Cart</a>'; ?></th>
-					<th>
-						<?php echo '<a href="profile.php?uid='.$user.'" style="text-decoration: none;color: #040403;padding: 4px 12px;background-color: #fff;border-radius: 12px;">My Orders</a>'; ?>
-					</th>
-					<th>
-						<?php echo '<a href="my_delivery.php?uid='.$user.'" style="text-decoration: none;color: #040403;padding: 4px 12px;background-color: #fff;border-radius: 12px;">MyDeliveryHistory</a>'; ?>
-					</th>
-					<th><?php echo '<a href="settings.php?uid='.$user.'" style="text-decoration: none;color: #040403;padding: 4px 12px;background-color: #e6b7b8;border-radius: 12px;">Settings</a>'; ?></th>
-					
-
-				</tr>
-			</table>
-		</div>
+	<div class="categolis">
+		<table>
+			<tr>
+				<th>
+					<a href="women/saree.php" style="text-decoration: none;color: #ddd;padding: 4px 12px;background-color: #c7587e;border-radius: 12px;">Saree</a>
+				</th>
+				<th><a href="women/ornament.php" style="text-decoration: none;color: #ddd;padding: 4px 12px;background-color: #c7587e;border-radius: 12px;">Ornament</a></th>
+				<th><a href="women/watch.php" style="text-decoration: none;color: #ddd;padding: 4px 12px;background-color: #c7587e;border-radius: 12px;">Watch</a></th>
+				<th><a href="women/perfume.php" style="text-decoration: none;color: #ddd;padding: 4px 12px;background-color: #c7587e;border-radius: 12px;">Perfume</a></th>
+				<th><a href="women/hijab.php" style="text-decoration: none;color: #ddd;padding: 4px 12px;background-color: #c7587e;border-radius: 12px;">Hijab</a></th>
+				<th><a href="women/tshirt.php" style="text-decoration: none;color: #ddd;padding: 4px 12px;background-color: #c7587e;border-radius: 12px;">T-Shirt</a></th>
+				<th><a href="women/footwear.php" style="text-decoration: none;color: #ddd;padding: 4px 12px;background-color: #c7587e;border-radius: 12px;">FootWear</a></th>
+				<th><a href="women/toilatry.php" style="text-decoration: none;color: #ddd;padding: 4px 12px;background-color: #c7587e;border-radius: 12px;">Toilatry</a></th>
+			</tr>
+		</table>
+	</div>
 	<div style="margin-top: 20px;">
-		<div style="width: 900px; margin: 0 auto;">
+		<div style="width: 901px; margin: 0 auto;">
 		
 			<ul>
-				<li style="">
+				<li style="float: left;">
+					<div class="settingsleftcontent">
+						<ul>
+							<li><?php echo '<a href="profile.php?uid='.$user.'" >My Orders</a>'; ?></li>
+							<li><?php echo '<a href="settings.php?uid='.$user.'" style=" background-color: #169e8f; border-radius: 4px; color: #fff;">Settings</a>'; ?></li>
+						</ul>
+					</div>
+				</li>
+				<li style="float: right;">
 					<div class="holecontainer" style=" padding-top: 20px; padding: 0 20%">
 						<form action="" method="POST" class="registration">
 							<div class="container signupform_content ">
-								<div style="font-size: 20px;color: #fff;margin: 0 0 5px 0;">
-									<tr >Change Password:</tr></br>
+								<div style="text-align: center;font-size: 20px;color: #fff;margin: 0 0 5px 0;">
+									<td >Change Password:</td>
 								</div>
 								<div>
-									<tr><input class="email signupbox" type="password" name="opass" placeholder="Old Password"></tr></br>
+									<td><input class="email signupbox" type="password" name="opass" placeholder="Old Password"></td>
 								</div>
 								<div>
-									<tr><input class="email signupbox" type="password" name="npass" placeholder="New Password"></tr></br>
+									<td><input class="email signupbox" type="password" name="npass" placeholder="New Password"></td>
 								</div>
 								<div>
-									<tr><input class="email signupbox" type="password" name="npass1" placeholder="Repeat Password"></tr></br></br></br></br></br>
+									<td><input class="email signupbox" type="password" name="npass1" placeholder="Repeat Password"></td>
 								</div>
-								<div style="font-size: 20px;color: #fff;margin: 0 0 5px 0;">
-									<tr>Change Email:<br></tr>
-								</div>
-								<div>
-									<tr><?php echo '<input class="email signupbox" required type="email" name="email" placeholder="New Email" value="'.$uemail_db.'">'; ?></tr></br>
+								<div style="text-align: center;font-size: 20px;color: #fff;margin: 0 0 5px 0;">
+									<td >Change Email:</td>
 								</div>
 								<div>
-									<tr><input class="uisignupbutton signupbutton" type="submit" name="changesettings" value="Update Settings"></tr></br>
+									<td><?php echo '<input class="email signupbox" required type="email" name="email" placeholder="New Email" value="'.$uemail_db.'">'; ?></td>
+								</div>
+								<div>
+									<td><input class="uisignupbutton signupbutton" type="submit" name="changesettings" value="Update Settings"></td>
 								</div>
 								<div>
 									<?php if (isset($success_message)) {echo $success_message;} ?>

@@ -64,10 +64,9 @@ $_POST['last_name'] = trim($_POST['last_name']);
 		// Check if email already exists
 		
 		$check = 0;
-		$e_check = mysqli_query($con, "SELECT email FROM `user` WHERE email='$u_email'");
-		$email_check = mysqli_num_rows($e_check);
-		if (strlen($_POST['first_name']) >2 && strlen($_POST['first_name']) <20 ) {
-			if (strlen($_POST['last_name']) >2 && strlen($_POST['last_name']) <20 ) {
+		$e_check = mysql_query("SELECT email FROM `user` WHERE email='$u_email'");
+		$email_check = mysql_num_rows($e_check);
+		if (strlen($_POST['first_name']) >2 && strlen($_POST['first_name']) <16 ) {
 			if ($check == 0 ) {
 				if ($email_check == 0) {
 					if (strlen($_POST['password']) >1 ) {
@@ -80,15 +79,15 @@ $_POST['last_name'] = trim($_POST['last_name']);
 						$confirmCode   = substr( rand() * 900000 + 100000, 0, 6 );
 						// send email
 						$msg = "
-						...
+						Assalamu Alaikum...
 						
 						Your activation code: ".$confirmCode."
 						Signup email: ".$_POST['email']."
 						
 						";
-						//if (@mail($_POST['email'],"eBuyBD Activation Code",$msg, "From:eBuyBD <no-reply@ebuybd.xyz>")) {
+						if (@mail($_POST['email'],"eBuyBD Activation Code",$msg, "From:eBuyBD <no-reply@ebuybd.xyz>")) {
 							
-						$result = mysqli_query($con, "INSERT INTO user (firstName,lastName,email,mobile,address,password,confirmCode) VALUES ('$_POST[first_name]','$_POST[last_name]','$_POST[email]','$_POST[mobile]','$_POST[signupaddress]','$_POST[password]','$confirmCode')");
+						$result = mysql_query("INSERT INTO user (firstName,lastName,email,mobile,address,password,confirmCode) VALUES ('$_POST[first_name]','$_POST[last_name]','$_POST[email]','$_POST[mobile]','$_POST[signupaddress]','$_POST[password]','$confirmCode')");
 						
 						//success message
 						$success_message = '
@@ -99,9 +98,9 @@ $_POST['last_name'] = trim($_POST['last_name']);
 							Activation code sent to your email. <br>
 							Your activation code: '.$confirmCode.'
 						</font></div></div>';
-						//}else {
-							//throw new Exception('Email is not valid!');
-						//}
+						}else {
+							throw new Exception('Email is not valid!');
+						}
 						
 						
 					}else {
@@ -113,11 +112,8 @@ $_POST['last_name'] = trim($_POST['last_name']);
 			}else {
 				throw new Exception('Username already taken!');
 			}
-			}else {
-			throw new Exception('Lastname must be 2-20 characters!');
-		}
 		}else {
-			throw new Exception('Firstname must be 2-20 characters!');
+			throw new Exception('Firstname must be 2-15 characters!');
 		}
 
 	}
@@ -140,7 +136,7 @@ $_POST['last_name'] = trim($_POST['last_name']);
 		<div class="homepageheader" style="position: inherit;">
 			<div class="signinButton loginButton">
 				<div class="uiloginbutton signinButton loginButton" style="margin-right: 40px;">
-					<a style="text-decoration: none;" href="signin.php">SIGN UP</a>
+					<a style="text-decoration: none;" href="signin.php">SIGN IN</a>
 				</div>
 				<div class="uiloginbutton signinButton loginButton" style="">
 					<a style="text-decoration: none;" href="login.php">LOG IN</a>
@@ -148,7 +144,7 @@ $_POST['last_name'] = trim($_POST['last_name']);
 			</div>
 			<div style="float: left; margin: 5px 0px 0px 23px;">
 				<a href="index.php">
-					<img style=" height: 75px; width: 130px;" src="image/cart.png">
+					<img style=" height: 75px; width: 130px;" src="image/ebuybdlogo.png">
 				</a>
 			</div>
 			<div class="">

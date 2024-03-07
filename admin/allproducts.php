@@ -8,10 +8,9 @@ if (!isset($_SESSION['admin_login'])) {
 }
 else {
 	$user = $_SESSION['admin_login'];
-	$result = mysqli_query($con, "SELECT * FROM admin WHERE id='$user'");
-		$get_user_email = mysqli_fetch_assoc($result);
+	$result = mysql_query("SELECT * FROM admin WHERE id='$user'");
+		$get_user_email = mysql_fetch_assoc($result);
 			$uname_db = $get_user_email['firstName'];
-			$utype_db=$get_user_email['type'];
 }
 
 $search_value = "";
@@ -39,7 +38,7 @@ $search_value = "";
 				<div class="uiloginbutton signinButton loginButton">
 					<?php 
 						if ($user!="") {
-							echo '<a style="text-decoration: none;color: #fff;" href="login.php">Hi '.$uname_db.'</br><span style="color: #de2a74">'.$utype_db.'</span></a>';
+							echo '<a style="text-decoration: none;color: #fff;" href="login.php">Hi '.$uname_db.'</a>';
 						}
 						else {
 							echo '<a style="text-decoration: none;color: #fff;" href="login.php">LOG IN</a>';
@@ -49,7 +48,7 @@ $search_value = "";
 			</div>
 			<div style="float: left; margin: 5px 0px 0px 23px;">
 				<a href="index.php">
-					<img style=" height: 75px; width: 130px;" src="../image/cart.png">
+					<img style=" height: 75px; width: 130px;" src="../image/ebuybdlogo.png">
 				</a>
 			</div>
 			<div class="">
@@ -64,12 +63,13 @@ $search_value = "";
 		<div class="categolis">
 			<table>
 				<tr>
-					
-<th>
-						<a href="index.php" style="text-decoration: none;color: #040403;padding: 4px 12px;background-color:#e6b7b8;border-radius: 12px;">Home</a>
+					<th>
+						<a href="index.php" style="text-decoration: none;color: #fff;padding: 4px 12px;background-color: #c7587e;border-radius: 12px;">Home</a>
 					</th>
-
-					
+					<th><a href="addproduct.php" style="text-decoration: none;color: #ddd;padding: 4px 12px;background-color: #c7587e;border-radius: 12px;">Add Product</a></th>
+					<th><a href="newadmin.php" style="text-decoration: none;color: #ddd;padding: 4px 12px;background-color: #c7587e;border-radius: 12px;">New Admin</a></th>
+					<th><a href="allproducts.php" style="text-decoration: none;color: #ddd;padding: 4px 12px;background-color: #24bfae;border-radius: 12px;">All Products</a></th>
+					<th><a href="orders.php" style="text-decoration: none;color: #ddd;padding: 4px 12px;background-color: #c7587e;border-radius: 12px;">Orders</a></th>
 				</tr>
 			</table>
 		</div>
@@ -80,7 +80,6 @@ $search_value = "";
 					<th>P Name</th>
 					<th>Description</th>
 					<th>Price</th>
-					<th>Piece</th>
 					<th>Available</th>
 					<th>Category</th>
 					<th>Type</th>
@@ -91,13 +90,12 @@ $search_value = "";
 				<tr>
 					<?php include ( "../inc/connect.inc.php");
 					$query = "SELECT * FROM products ORDER BY id DESC";
-					$run = mysqli_query($con, $query);
-					while ($row=mysqli_fetch_assoc($run)) {
+					$run = mysql_query($query);
+					while ($row=mysql_fetch_assoc($run)) {
 						$id = $row['id'];
 						$pName = substr($row['pName'], 0,50);
 						$descri = $row['description'];
 						$price = $row['price'];
-						$piece=$row['piece'];
 						$available = $row['available'];
 						$category = $row['category'];
 						$type = $row['type'];
@@ -110,7 +108,6 @@ $search_value = "";
 					<th><?php echo $pName; ?></th>
 					<th><?php echo $descri; ?></th>
 					<th><?php echo $price; ?></th>
-					<th><?php echo $piece; ?></th>
 					<th><?php echo $available; ?></th>
 					<th><?php echo $category; ?></th>
 					<th><?php echo $type; ?></th>

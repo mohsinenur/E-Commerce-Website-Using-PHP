@@ -1,3 +1,4 @@
 <?php 
-	$con = mysqli_connect("localhost","root","", "grocerydb") or die("Couldn't connect to SQL server");
+	mysql_connect("localhost","root","") or die("Couldn't connet to SQL server");
+	mysql_select_db("ebuybd") or die("Couldn'ttt select DB");
 ?>

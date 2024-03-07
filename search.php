@@ -7,14 +7,14 @@ if (!isset($_SESSION['user_login'])) {
 }
 else {
 	$user = $_SESSION['user_login'];
-	$result = mysqli_query($con, "SELECT * FROM user WHERE id='$user'");
-		$get_user_email = mysqli_fetch_assoc($result);
+	$result = mysql_query("SELECT * FROM user WHERE id='$user'");
+		$get_user_email = mysql_fetch_assoc($result);
 			$uname_db = $get_user_email['firstName'];
 }
 
 if (isset($_REQUEST['keywords'])) {
 
-	$epid = mysqli_real_escape_string($con, $_REQUEST['keywords']);
+	$epid = mysql_real_escape_string($_REQUEST['keywords']);
 	if($epid != "" && ctype_alnum($epid)){
 		
 	}else {
@@ -32,7 +32,7 @@ $search_value = trim($_GET['keywords']);
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Noodles&Canned</title>
+	<title>SAREE</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -63,7 +63,7 @@ $search_value = trim($_GET['keywords']);
 		</div>
 		<div style="float: left; margin: 5px 0px 0px 23px;">
 			<a href="index.php">
-				<img style=" height: 75px; width: 130px;" src="image/cart.png">
+				<img style=" height: 75px; width: 130px;" src="image/ebuybdlogo.png">
 			</a>
 		</div>
 		<div id="srcheader">
@@ -79,15 +79,15 @@ $search_value = trim($_GET['keywords']);
 		<table>
 			<tr>
 				<th>
-					<a href="OurProducts/NoodlesCanned.php" style="text-decoration: none;color: #040403;padding: 4px 12px;background-color: #e6b7b8;border-radius: 12px;">Noodles&Canned</a>
+					<a href="women/saree.php" style="text-decoration: none;color: #ddd;padding: 4px 12px;background-color: #c7587e;border-radius: 12px;">Saree</a>
 				</th>
-				<th><a href="OurProducts/Seasonings.php" style="text-decoration: none;color: #040403;padding: 4px 12px;background-color: #e6b7b8;border-radius: 12px;">Seasonings</a></th>
-				<th><a href="OurProducts/Drinks.php" style="text-decoration: none;color: #040403;padding: 4px 12px;background-color: #e6b7b8;border-radius: 12px;">Drinks</a></th>
-				<th><a href="OurProducts/Snacks.php" style="text-decoration: none;color: #040403;padding: 4px 12px;background-color: #e6b7b8;border-radius: 12px;">Snacks</a></th>
-				<th><a href="OurProducts/Sweets.php" style="text-decoration: none;color: #040403;padding: 4px 12px;background-color: #e6b7b8;border-radius: 12px;">Sweets</a></th>
-				<th><a href="OurProducts/Soap&Detergent.php" style="text-decoration: none;color: #040403;padding: 4px 12px;background-color: #e6b7b8;border-radius: 12px;">Soap&Detergent</a></th>
-				<th><a href="OurProducts/Shampoo.php" style="text-decoration: none;color: #040403;padding: 4px 12px;background-color: #e6b7b8;border-radius: 12px;">Shampoo</a></th>
-				<th><a href="OurProducts/Hygene.php" style="text-decoration: none;color: #040403;padding: 4px 12px;background-color: #e6b7b8;border-radius: 12px;">Hygene</a></th>
+				<th><a href="women/ornament.php" style="text-decoration: none;color: #ddd;padding: 4px 12px;background-color: #c7587e;border-radius: 12px;">Ornament</a></th>
+				<th><a href="women/watch.php" style="text-decoration: none;color: #ddd;padding: 4px 12px;background-color: #c7587e;border-radius: 12px;">Watch</a></th>
+				<th><a href="women/perfume.php" style="text-decoration: none;color: #ddd;padding: 4px 12px;background-color: #c7587e;border-radius: 12px;">Perfume</a></th>
+				<th><a href="women/hijab.php" style="text-decoration: none;color: #ddd;padding: 4px 12px;background-color: #c7587e;border-radius: 12px;">Hijab</a></th>
+				<th><a href="women/tshirt.php" style="text-decoration: none;color: #ddd;padding: 4px 12px;background-color: #c7587e;border-radius: 12px;">T-Shirt</a></th>
+				<th><a href="women/footwear.php" style="text-decoration: none;color: #ddd;padding: 4px 12px;background-color: #c7587e;border-radius: 12px;">FootWear</a></th>
+				<th><a href="women/toilatry.php" style="text-decoration: none;color: #ddd;padding: 4px 12px;background-color: #c7587e;border-radius: 12px;">Toilatry</a></th>
 			</tr>
 		</table>
 	</div>
@@ -96,11 +96,11 @@ $search_value = trim($_GET['keywords']);
 		<?php 
 			if (isset($_GET['keywords']) && $_GET['keywords'] != ""){
 				$search_value = trim($_GET['keywords']);
-				$getposts = mysqli_query($con, "SELECT * FROM products WHERE pName like '%$search_value%'  ORDER BY id DESC") or die(mysqlI_error($con));
-					if ( $total = mysqli_num_rows($getposts)) {
+				$getposts = mysql_query("SELECT * FROM products WHERE pName like '%$search_value%'  ORDER BY id DESC") or die(mysql_error());
+					if ( $total = mysql_num_rows($getposts)) {
 					echo '<ul id="recs">';
 					echo '<div style="text-align: center;"> '.$total.' Products Found... </div><br>';
-					while ($row = mysqli_fetch_assoc($getposts)) {
+					while ($row = mysql_fetch_assoc($getposts)) {
 						$id = $row['id'];
 						$pName = $row['pName'];
 						$price = $row['price'];
@@ -114,7 +114,7 @@ $search_value = trim($_GET['keywords']);
 									<div class="home-prodlist-img"><a href="women/view_product.php?pid='.$id.'">
 										<img src="image/product/'.$item.'/'.$picture.'" class="home-prodlist-imgi">
 										</a>
-										<div style="text-align: center; padding: 0 0 6px 0;"> <span style="font-size: 15px;">'.$pName.'</span><br> Price: '.$price.' Php</div>
+										<div style="text-align: center; padding: 0 0 6px 0;"> <span style="font-size: 15px;">'.$pName.'</span><br> Price: '.$price.' Tk</div>
 									</div>
 									
 								</li>
