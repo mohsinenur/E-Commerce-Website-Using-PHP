@@ -3,9 +3,6 @@
 ## Summary
 Hello friends, This is my first full e-commerce project. This is free. Anybody can use and moderate this project.
 
-### Youtube
-Youtube preview link: https://www.youtube.com/watch?v=aYV4DOPtp3Y
-
 ## Platform Used
 ### Front-End
   (i) HTML5 <br>
@@ -37,7 +34,3 @@ Youtube preview link: https://www.youtube.com/watch?v=aYV4DOPtp3Y
 
 ## Conclusion
 There are also many more feature which are not in the list. Feel free to use this project
-
-### Set Up
-(i) Use XAMPP 5.6 for this project. You can download it from here... https://www.apachefriends.org/download.html
-
