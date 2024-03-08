@@ -15,9 +15,11 @@ else {
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Welcome to nita's online grocery</title>
+		<title>Vente en ligne de produit de première necessité PPN</title>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="Vente en ligne de produit de première necessité PPN à prix imbattable...">
+		<meta name="keywords" content="vente, en ligne, PPN,prix imbattable,Madagascar">
 		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 		<script src="/js/homeslideshow.js"></script>
 	</head>
@@ -64,8 +66,8 @@ else {
 			<div class="home-welcome-text" style="background-image: url(image/background.jpg); height: 380px; ">
 				<div style="padding-top: 180px;">
 					<div style=" background-color: #dadbe6;">
-						<h1 style="margin: 0px;">Welcome To nita's online grocery</h1>
-						<h2>Most Convenient Store in 7th ave. Caloocan</h2>
+						<h1 style="margin: 0px;">Vente en ligne de produit de première necessité PPN</h1>
+						<h2>Nous proposons les prix des <strong>PPN</strong> à prix imbattable</h2>
 					</div>
 				</div>
 			</div>
@@ -78,7 +80,7 @@ else {
 				<ul style="float: left;">
 					<li style="float: left; padding: 25px;">
 						<div class="home-prodlist-img"><a href="OurProducts/NoodlesCanned.php">
-							<img src="./image/product/noodles/n.jpg" class="home-prodlist-imgi">
+							<img src="./image/product/noodles/n.jpg" class="home-prodlist-imgi" alt="image de PPN">
 							</a>
 						</div>
 					</li>
@@ -86,7 +88,7 @@ else {
 				<ul style="float: left;">
 					<li style="float: left; padding: 25px;">
 						<div class="home-prodlist-img"><a href="OurProducts/Snacks.php">
-							<img src="./image/product/snack/sn.jpg" class="home-prodlist-imgi">
+							<img src="./image/product/snack/sn.jpg" class="home-prodlist-imgi"  alt="image de PPN">
 							</a>
 						</div>
 					</li>
@@ -94,42 +96,42 @@ else {
 				<ul style="float: left;">
 					<li style="float: left; padding: 25px;">
 						<div class="home-prodlist-img"><a href="OurProducts/Sweets.php">
-							<img src="./image/product/sweet/s.jpg" class="home-prodlist-imgi"></a>
+							<img src="./image/product/sweet/s.jpg" class="home-prodlist-imgi"  alt="image de PPN"></a>
 						</div>
 					</li>
 				</ul>
 				<ul style="float: left;">
 					<li style="float: left; padding: 25px;">
 						<div class="home-prodlist-img"><a href="OurProducts/Hygene.php">
-							<img src="./image/product/hygiene/hy.jpg" class="home-prodlist-imgi"></a>
+							<img src="./image/product/hygiene/hy.jpg" class="home-prodlist-imgi"  alt="image de PPN"></a>
 						</div>
 					</li>
 				</ul>
 				<ul style="float: left;">
 					<li style="float: left; padding: 25px;">
 						<div class="home-prodlist-img"><a href="OurProducts/Shampoo.php">
-							<img src="./image/product/shampoo/pall.jpg" class="home-prodlist-imgi"></a>
+							<img src="./image/product/shampoo/pall.jpg" class="home-prodlist-imgi"  alt="image de PPN"></a>
 						</div>
 					</li>
 				</ul>
 				<ul style="float: left;">
 					<li style="float: left; padding: 25px;">
 						<div class="home-prodlist-img"><a href="OurProducts/Soap&Detergent.php">
-							<img src="./image/product/soap/sp.jpg" class="home-prodlist-imgi"></a>
+							<img src="./image/product/soap/sp.jpg" class="home-prodlist-imgi"  alt="image de PPN"></a>
 						</div>
 					</li>
 				</ul>
 				<ul style="float: left;">
 					<li style="float: left; padding: 25px;">
 						<div class="home-prodlist-img"><a href="OurProducts/Drinks.php">
-							<img src="./image/product/drink/dr.jpg" class="home-prodlist-imgi"></a>
+							<img src="./image/product/drink/dr.jpg" class="home-prodlist-imgi"  alt="image de PPN"></a>
 						</div>
 					</li>
 				</ul>
 				<ul style="float: left;">
 					<li style="float: left; padding: 25px;">
 						<div class="home-prodlist-img"><a href="OurProducts/Seasonings.php">
-							<img src="./image/product/seasoning/cond.jpg" class="home-prodlist-imgi"></a>
+							<img src="./image/product/seasoning/cond.jpg" class="home-prodlist-imgi"  alt="image de PPN"></a>
 						</div>
 					</li>
 				</ul>

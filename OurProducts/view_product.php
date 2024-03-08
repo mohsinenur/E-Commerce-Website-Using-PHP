@@ -50,7 +50,7 @@ if (isset($_POST['addcart'])) {
 <!DOCTYPE html>
 <html>
 <head>
-	<title>View-Prod</title>
+	<title>Details de poduit</title>
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -73,23 +73,22 @@ if (isset($_POST['addcart'])) {
 		</table>
 	</div>
 	<div style="margin: 0 97px; padding: 10px">
-
+		<h1><strong>Details</strong></h1>
 		<?php 
 			echo '
 				<div style="float: left;">
+				
 				<div>
-					<img src="../image/product/'.$item.'/'.$picture.'" style="height: 500px; width: 500px; padding: 2px; border: 2px solid #c7587e;">
+					<img src="../image/product/'.$item.'/'.$picture.'" alt="Image de '.$pName.'" style="height: 500px; width: 500px; padding: 2px; border: 2px solid #c7587e;">
 				</div>
 				</div>
 				<div style="float: right;width: 40%;color: #067165;background-color: #ddd;padding: 10px;">
 					<div style="">
-						<h3 style="font-size: 25px; font-weight: bold; ">'.$pName.'</h3><hr>
+						<h2 style="font-size: 25px; font-weight: bold; ">'.$pName.'</h3><hr>
 						<h3 style="padding: 20px 0 0 0; font-size: 20px;">Price: '.$price.'Php</h3><hr>
 						<h3 style="padding: 20px 0 0 0; font-size: 22px; ">Pieces:'.$piece.'</h3>
 						<h3 style="padding: 20px 0 0 0; font-size: 22px; ">Description:</h3>
-						<p>
 							'.$description.'
-						</p>
 
 						<div>
 							<h3 style="padding: 20px 0 5px 0; font-size: 20px;">Want to buy this product? </h3>

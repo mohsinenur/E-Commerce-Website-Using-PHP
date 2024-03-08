@@ -1,3 +1,8 @@
+Options +FollowSymlinks
+RewriteEngine on
+RewriteRule ^/?.*-([_a-z0-9]*).html$ OurProducts/view_product.php?pid=$1 [L]
+
+
 <IfModule mod_expires.c>
 	ExpiresActive On
 	ExpiresDefault "access plus 7200 seconds"
@@ -42,4 +47,5 @@
     AddOutputFilterByType DEFLATE text/plain
     AddOutputFilterByType DEFLATE text/xml
 </IfModule>
+
 

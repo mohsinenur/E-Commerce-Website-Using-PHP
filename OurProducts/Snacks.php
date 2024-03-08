@@ -16,7 +16,8 @@ else {
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Snacks</title>
+	<title>Snacks à prix imbattable</title>
+	<meta name="description" content="Snacks à prix imbattable">
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -51,15 +52,17 @@ else {
 						$description = $row['description'];
 						$picture = $row['picture'];
 						
-						echo '
+							echo '
 							<ul style="float: left;">
 								<li style="float: left; padding: 0px 25px 25px 25px;">
-									<div class="home-prodlist-img"><a href="view_product.php?pid='.$id.'">
-										<img src="../image/product/snack/'.$picture.'" class="home-prodlist-imgi">
+									<div class="home-prodlist-img"><a href="./'.$pName.'-'.$id.'.html">
+										<h2>MGA '.$price.'</h2>
+										<img src="../image/product/snack/'.$picture.'" class="home-prodlist-imgi" alt="Image de ppn imbattable">
 										</a>
-										<div style="text-align: center; padding: 0 0 6px 0;"> <span style="font-size: 22px;  color:#d8f30d">'.$pName.'</span><br> <span style="font-size: 15px;  color:#d8f30d">Price: '.$price.' Php</span></div>
+										<div style="text-align: center; padding: 0 0 6px 0;">
+											<h3>'.$pName.'</h3>
+										</div>
 									</div>
-									
 								</li>
 							</ul>
 						';
