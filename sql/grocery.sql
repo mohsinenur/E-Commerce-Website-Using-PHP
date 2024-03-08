@@ -50,7 +50,7 @@ INSERT INTO `admin` (`id`, `firstName`, `lastName`, `email`, `mobile`, `address`
 (3, 'Jhenny', 'Lee', 'lee@gmail.com', '09207601999', 'longos', '69a9dc1da83c4c3e58a5ecb7c9de78fa', 'admin', '139474');
 
 
-INSERT INTO `admin` (`id`, `firstName`, `lastName`, `email`, `mobile`, `address`, `password`, `type`, `confirmCode`) VALUES (1, 'rkt', 'rkt', 'rakoto@gmail.com', '6464651', 'okay', 'fcf92f946e42a49a804860ab4e806d59', 'admin', '123456');
+INSERT INTO `admin` (`id`, `firstName`, `lastName`, `email`, `mobile`, `address`, `password`, `type`, `confirmCode`) VALUES (4, 'rkt', 'rkt', 'rakoto@gmail.com', '6464651', 'okay', 'fcf92f946e42a49a804860ab4e806d59', 'admin', '123456');
 
 -- --------------------------------------------------------
 

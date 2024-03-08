@@ -1,3 +1,13 @@
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q04RQL3WWF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Q04RQL3WWF');
+  console.log("google");
+</script>
 <?php include ( "inc/connect.inc.php" ); ?>
 <?php 
 ob_start();
@@ -15,10 +25,10 @@ else {
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Vente en ligne de produit de première necessité PPN</title>
+		<title>Vente en ligne de produit de première necessité PPN : Nouilles , Snacks ,Sweets , Hygiene, Drinks</title>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="description" content="Vente en ligne de produit de première necessité PPN à prix imbattable...">
+		<meta name="description" content="Vente en ligne de produit de première necessité PPN à prix imbattable  Nouilles , Snacks ,Sweets , Hygiene, Drinks">
 		<meta name="keywords" content="vente, en ligne, PPN,prix imbattable,Madagascar">
 		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 		<script src="/js/homeslideshow.js"></script>
@@ -67,7 +77,7 @@ else {
 				<div style="padding-top: 180px;">
 					<div style=" background-color: #dadbe6;">
 						<h1 style="margin: 0px;">Vente en ligne de produit de première necessité PPN</h1>
-						<h2>Nous proposons les prix des <strong>PPN</strong> à prix imbattable</h2>
+						<h2>Nous proposons les prix des <strong>PPN</strong>( Nouilles , Snacks ,Sweets , Hygiene, Drinks) à prix imbattable</h2>
 					</div>
 				</div>
 			</div>
